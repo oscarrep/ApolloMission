@@ -10,7 +10,7 @@
 ModuleSceneIntro::ModuleSceneIntro(Application* app, bool start_enabled) : Module(app, start_enabled)
 {
 	circle = box = rick = NULL;
-	table = NULL;
+	background = NULL;
 }
 
 ModuleSceneIntro::~ModuleSceneIntro()
@@ -23,17 +23,22 @@ bool ModuleSceneIntro::Start()
 	bool ret = true;
 
 	App->renderer->camera.x = App->renderer->camera.y = 0;
+	App->audio->PlayMusic("Assets/space_riddle.ogg");
 
 	circle = App->textures->Load("pinball/wheel.png"); 
 	box = App->textures->Load("pinball/crate.png");
 	rick = App->textures->Load("pinball/rick_head.png");
 	bonus_fx = App->audio->LoadFx("pinball/bonus.wav");
-	table = App->textures->Load("pinball/Texturas2.png");
+	background = App->textures->Load("Assets/purple_nebula.png");
+	asteroid = App->textures->Load("Assets/asteroid.png");
+	ship = App->textures->Load("Assets/spaceship.png");
+	moon = App->textures->Load("Assets/moon.png");
+	earth = App->textures->Load("Assets/earth.png");
 
-	tablerect.x = 222;
-	tablerect.y = 369;
-	tablerect.h = 730;
-	tablerect.w = 442;
+	backgroundrect.x = 0;
+	backgroundrect.y = 0;
+	backgroundrect.h = 1024;
+	backgroundrect.w = 1024;
 	return ret;
 }
 
@@ -97,7 +102,7 @@ update_status ModuleSceneIntro::Update()
 			30, 62
 		};
 
-		ricks.add(App->physics->CreateChain(App->input->GetMouseX(), App->input->GetMouseY(), rick_head, 64));
+		//ricks.add(App->physics->CreateChain(App->input->GetMouseX(), App->input->GetMouseY(), rick_head, 64));
 	}
 
 	// Prepare for raycast ------------------------------------------------------
@@ -127,7 +132,7 @@ update_status ModuleSceneIntro::Update()
 		c = c->next;
 	}
 
-	c = ricks.getFirst();
+	//c = ricks.getFirst();
 
 	while(c != NULL)
 	{
@@ -136,7 +141,7 @@ update_status ModuleSceneIntro::Update()
 		App->renderer->Blit(rick, x, y, NULL, 1.0f, c->data->GetRotation());
 		c = c->next;
 	}
-	App->renderer->Blit(table, 0, 0, &tablerect);
+	App->renderer->Blit(background, 0, 0, &backgroundrect);
 
 	return UPDATE_CONTINUE;
 }

@@ -21,12 +21,19 @@ public:
 	p2List<PhysBody*> circles;
 	p2List<PhysBody*> boxes;
 	p2List<PhysBody*> ricks;
+	p2List<PhysBody*> triangles;
 
 	SDL_Texture* circle;
 	SDL_Texture* box;
 	SDL_Texture* rick;
-	SDL_Texture* table;
+	SDL_Texture* background;
+	SDL_Texture* ship;
+	SDL_Texture* earth;
+	SDL_Texture* moon;
+	SDL_Texture* asteroid;
+	SDL_Texture* satellite;
+
 	uint bonus_fx;
 
-	SDL_Rect tablerect;
+	SDL_Rect backgroundrect;
 };
