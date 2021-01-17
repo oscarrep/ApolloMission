@@ -1,23 +1,23 @@
 #include "Globals.h"
 #include "Application.h"
 #include "ModuleRender.h"
-#include "ModuleSceneIntro.h"
+#include "ModuleScene.h"
 #include "ModuleInput.h"
 #include "ModuleTextures.h"
 #include "ModuleAudio.h"
 #include "ModulePhysics.h"
 
-ModuleSceneIntro::ModuleSceneIntro(Application* app, bool start_enabled) : Module(app, start_enabled)
+ModuleScene::ModuleScene(Application* app, bool start_enabled) : Module(app, start_enabled)
 {
 	circle = box = rick = NULL;
 	background = NULL;
 }
 
-ModuleSceneIntro::~ModuleSceneIntro()
+ModuleScene::~ModuleScene()
 {}
 
 // Load assets
-bool ModuleSceneIntro::Start()
+bool ModuleScene::Start()
 {
 	LOG("Loading Intro assets");
 	bool ret = true;
@@ -43,7 +43,7 @@ bool ModuleSceneIntro::Start()
 }
 
 // Load assets
-bool ModuleSceneIntro::CleanUp()
+bool ModuleScene::CleanUp()
 {
 	LOG("Unloading Intro scene");
 
@@ -51,7 +51,7 @@ bool ModuleSceneIntro::CleanUp()
 }
 
 // Update: draw background
-update_status ModuleSceneIntro::Update()
+update_status ModuleScene::Update()
 {
 	if(App->input->GetKey(SDL_SCANCODE_1) == KEY_DOWN)
 	{
@@ -146,7 +146,7 @@ update_status ModuleSceneIntro::Update()
 	return UPDATE_CONTINUE;
 }
 
-void ModuleSceneIntro::OnCollision(PhysBody* bodyA, PhysBody* bodyB)
+void ModuleScene::OnCollision(PhysBody* bodyA, PhysBody* bodyB)
 {
 	/*App->audio->PlayFx(bonus_fx);*/
 }
