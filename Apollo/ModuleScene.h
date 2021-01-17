@@ -36,7 +36,7 @@ public:
 	SDL_Texture* ship;
 	SDL_Texture* earth;
 	SDL_Texture* moon;
-	SDL_Texture* asteroid;
+	SDL_Texture* asteroids;
 	SDL_Texture* satellite;
 	SDL_Texture* fire;
 
