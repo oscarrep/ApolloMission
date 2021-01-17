@@ -88,6 +88,102 @@ bool ModuleScene::Start()
 	asteroidAnim.PushBack({ 4900, 0,  100, 100 });
 	asteroidAnim.speed = 0.2f;
 
+	earthAnim.PushBack({ 0,	  0,  100, 100 });
+	earthAnim.PushBack({ 100,  0,  100, 100 });
+	earthAnim.PushBack({ 200,  0,  100, 100 });
+	earthAnim.PushBack({ 300,  0,  100, 100 });
+	earthAnim.PushBack({ 400,  0,  100, 100 });
+	earthAnim.PushBack({ 500,  0,  100, 100 });
+	earthAnim.PushBack({ 600,  0,  100, 100 });
+	earthAnim.PushBack({ 700,  0,  100, 100 });
+	earthAnim.PushBack({ 800,  0,  100, 100 });
+	earthAnim.PushBack({ 900,  0,  100, 100 });
+	earthAnim.PushBack({ 1000, 0,  100, 100 });
+	earthAnim.PushBack({ 1100, 0,  100, 100 });
+	earthAnim.PushBack({ 1200, 0,  100, 100 });
+	earthAnim.PushBack({ 1300, 0,  100, 100 });
+	earthAnim.PushBack({ 1400, 0,  100, 100 });
+	earthAnim.PushBack({ 1500, 0,  100, 100 });
+	earthAnim.PushBack({ 1600, 0,  100, 100 });
+	earthAnim.PushBack({ 1800, 0,  100, 100 });
+	earthAnim.PushBack({ 1900, 0,  100, 100 });
+	earthAnim.PushBack({ 2000, 0,  100, 100 });
+	earthAnim.PushBack({ 2100, 0,  100, 100 });
+	earthAnim.PushBack({ 2200, 0,  100, 100 });
+	earthAnim.PushBack({ 2300, 0,  100, 100 });
+	earthAnim.PushBack({ 2400, 0,  100, 100 });
+	earthAnim.PushBack({ 2500, 0,  100, 100 });
+	earthAnim.PushBack({ 2600, 0,  100, 100 });
+	earthAnim.PushBack({ 2800, 0,  100, 100 });
+	earthAnim.PushBack({ 2900, 0,  100, 100 });
+	earthAnim.PushBack({ 3000, 0,  100, 100 });
+	earthAnim.PushBack({ 3100, 0,  100, 100 });
+	earthAnim.PushBack({ 3200, 0,  100, 100 });
+	earthAnim.PushBack({ 3300, 0,  100, 100 });
+	earthAnim.PushBack({ 3400, 0,  100, 100 });
+	earthAnim.PushBack({ 3500, 0,  100, 100 });
+	earthAnim.PushBack({ 3600, 0,  100, 100 });
+	earthAnim.PushBack({ 3800, 0,  100, 100 });
+	earthAnim.PushBack({ 3900, 0,  100, 100 });
+	earthAnim.PushBack({ 4000, 0,  100, 100 });
+	earthAnim.PushBack({ 4100, 0,  100, 100 });
+	earthAnim.PushBack({ 4200, 0,  100, 100 });
+	earthAnim.PushBack({ 4300, 0,  100, 100 });
+	earthAnim.PushBack({ 4400, 0,  100, 100 });
+	earthAnim.PushBack({ 4500, 0,  100, 100 });
+	earthAnim.PushBack({ 4600, 0,  100, 100 });
+	earthAnim.PushBack({ 4800, 0,  100, 100 });
+	earthAnim.PushBack({ 4900, 0,  100, 100 });
+	earthAnim.speed = 0.2f;
+
+	moonAnim.PushBack({ 0,	  0,  100, 100 });
+	moonAnim.PushBack({ 100,  0,  100, 100 });
+	moonAnim.PushBack({ 200,  0,  100, 100 });
+	moonAnim.PushBack({ 300,  0,  100, 100 });
+	moonAnim.PushBack({ 400,  0,  100, 100 });
+	moonAnim.PushBack({ 500,  0,  100, 100 });
+	moonAnim.PushBack({ 600,  0,  100, 100 });
+	moonAnim.PushBack({ 700,  0,  100, 100 });
+	moonAnim.PushBack({ 800,  0,  100, 100 });
+	moonAnim.PushBack({ 900,  0,  100, 100 });
+	moonAnim.PushBack({ 1000, 0,  100, 100 });
+	moonAnim.PushBack({ 1100, 0,  100, 100 });
+	moonAnim.PushBack({ 1200, 0,  100, 100 });
+	moonAnim.PushBack({ 1300, 0,  100, 100 });
+	moonAnim.PushBack({ 1400, 0,  100, 100 });
+	moonAnim.PushBack({ 1500, 0,  100, 100 });
+	moonAnim.PushBack({ 1600, 0,  100, 100 });
+	moonAnim.PushBack({ 1800, 0,  100, 100 });
+	moonAnim.PushBack({ 1900, 0,  100, 100 });
+	moonAnim.PushBack({ 2000, 0,  100, 100 });
+	moonAnim.PushBack({ 2100, 0,  100, 100 });
+	moonAnim.PushBack({ 2200, 0,  100, 100 });
+	moonAnim.PushBack({ 2300, 0,  100, 100 });
+	moonAnim.PushBack({ 2400, 0,  100, 100 });
+	moonAnim.PushBack({ 2500, 0,  100, 100 });
+	moonAnim.PushBack({ 2600, 0,  100, 100 });
+	moonAnim.PushBack({ 2800, 0,  100, 100 });
+	moonAnim.PushBack({ 2900, 0,  100, 100 });
+	moonAnim.PushBack({ 3000, 0,  100, 100 });
+	moonAnim.PushBack({ 3100, 0,  100, 100 });
+	moonAnim.PushBack({ 3200, 0,  100, 100 });
+	moonAnim.PushBack({ 3300, 0,  100, 100 });
+	moonAnim.PushBack({ 3400, 0,  100, 100 });
+	moonAnim.PushBack({ 3500, 0,  100, 100 });
+	moonAnim.PushBack({ 3600, 0,  100, 100 });
+	moonAnim.PushBack({ 3800, 0,  100, 100 });
+	moonAnim.PushBack({ 3900, 0,  100, 100 });
+	moonAnim.PushBack({ 4000, 0,  100, 100 });
+	moonAnim.PushBack({ 4100, 0,  100, 100 });
+	moonAnim.PushBack({ 4200, 0,  100, 100 });
+	moonAnim.PushBack({ 4300, 0,  100, 100 });
+	moonAnim.PushBack({ 4400, 0,  100, 100 });
+	moonAnim.PushBack({ 4500, 0,  100, 100 });
+	moonAnim.PushBack({ 4600, 0,  100, 100 });
+	moonAnim.PushBack({ 4800, 0,  100, 100 });
+	moonAnim.PushBack({ 4900, 0,  100, 100 });
+	moonAnim.speed = 0.2f;
+
 	
 	return ret;
 }
@@ -195,6 +291,9 @@ update_status ModuleScene::Update()
 
 	App->renderer->Blit(background, 0, 0, &backgroundrect);
 	App->renderer->Blit(asteroid, 0, 0, &(asteroidAnim.GetCurrentFrame()));
+	App->renderer->Blit(earth, 1000, 1000, &(asteroidAnim.GetCurrentFrame()));
+	App->renderer->Blit(moon, 500, 0, &(asteroidAnim.GetCurrentFrame()));
+
 
 	return UPDATE_CONTINUE;
 }

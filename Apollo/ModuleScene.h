@@ -18,6 +18,11 @@ public:
 	bool CleanUp();
 	void OnCollision(PhysBody* bodyA, PhysBody* bodyB);
 
+	void LoadEarth();
+	void LoadMoon();
+
+	void LoadAsteroid();
+
 public:
 	p2List<PhysBody*> circles;
 	p2List<PhysBody*> boxes;
