@@ -26,7 +26,7 @@ public:
 public:
 	p2List<PhysBody*> circles;
 	p2List<PhysBody*> boxes;
-	p2List<PhysBody*> ricks;
+	PhysBody* spaceship;
 	p2List<PhysBody*> triangles;
 
 	SDL_Texture* circle;
@@ -48,4 +48,24 @@ public:
 	uint bonus_fx;
 
 	SDL_Rect backgroundrect;
+
+	int spaceshipChain[34] = {
+	25, 0,
+	25, -27,
+	7, -54,
+	4, -50,
+	4, -35,
+	0, -39,
+	-4, -35,
+	-4, -50,
+	-7, -54,
+	-25, -27,
+	-25, 37,
+	-18, 42,
+	-18, 50,
+	17, 50,
+	17, 42,
+	25, 37,
+	25, -9
+	};
 };
