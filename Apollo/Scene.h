@@ -7,11 +7,11 @@
 
 class PhysBody;
 
-class ModuleScene : public Module
+class Scene : public Module
 {
 public:
-	ModuleScene(Application* app, bool start_enabled = true);
-	~ModuleScene();
+	Scene(Application* app, bool start_enabled = true);
+	~Scene();
 
 	bool Start();
 	update_status Update(float dt);

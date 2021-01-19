@@ -2,12 +2,13 @@
 #include "Module.h"
 #include "Globals.h"
 #include "p2Point.h"
+//#include "vector2.h"
 
-class ModulePlayer : public Module
+class Player : public Module
 {
 public:
-	ModulePlayer(Application* app, bool start_enabled = true);
-	virtual ~ModulePlayer();
+	Player(Application* app, bool start_enabled = true);
+	virtual ~Player();
 
 	bool Start();
 	update_status Update(float dt);
@@ -17,6 +18,10 @@ public:
 	PhysBody* spaceship;
 	iPoint shipPos;
 	uint fire;
+
+	int hp;
+	float fuel;
+	iPoint speed;
 
 	int spaceshipChain[34] = 
 	{

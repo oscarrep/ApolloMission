@@ -1,8 +1,8 @@
 #include "Globals.h"
 #include "Application.h"
-#include "ModuleInput.h"
-#include "ModuleRender.h"
-#include "ModulePhysics.h"
+#include "Input.h"
+#include "Render.h"
+#include "Physics.h"
 #include "p2Point.h"
 #include "math.h"
 
@@ -12,7 +12,7 @@
 #pragma comment( lib, "Box2D/libx86/Release/Box2D.lib" )
 #endif
 
-ModulePhysics::ModulePhysics(Application* app, bool start_enabled) : Module(app, start_enabled)
+Physics::Physics(Application* app, bool start_enabled) : Module(app, start_enabled)
 {
 	world = NULL;
 	mouse_joint = NULL;
@@ -20,11 +20,11 @@ ModulePhysics::ModulePhysics(Application* app, bool start_enabled) : Module(app,
 }
 
 // Destructor
-ModulePhysics::~ModulePhysics()
+Physics::~Physics()
 {
 }
 
-bool ModulePhysics::Start()
+bool Physics::Start()
 {
 	LOG("Creating Physics 2D environment");
 
@@ -52,7 +52,7 @@ bool ModulePhysics::Start()
 }
 
 // 
-update_status ModulePhysics::PreUpdate(float dt)
+update_status Physics::PreUpdate(float dt)
 {
 	world->Step(1.0f / 60.0f, 6, 2);
 
@@ -70,7 +70,7 @@ update_status ModulePhysics::PreUpdate(float dt)
 	return UPDATE_CONTINUE;
 }
 
-PhysBody* ModulePhysics::CreateCircle(int x, int y, int radius)
+PhysBody* Physics::CreateCircle(int x, int y, int radius)
 {
 	b2BodyDef body;
 	body.type = b2_dynamicBody;
@@ -94,7 +94,7 @@ PhysBody* ModulePhysics::CreateCircle(int x, int y, int radius)
 	return pbody;
 }
 
-PhysBody* ModulePhysics::CreateRectangle(int x, int y, int width, int height)
+PhysBody* Physics::CreateRectangle(int x, int y, int width, int height)
 {
 	b2BodyDef body;
 	body.type = b2_dynamicBody;
@@ -119,7 +119,7 @@ PhysBody* ModulePhysics::CreateRectangle(int x, int y, int width, int height)
 	return pbody;
 }
 
-PhysBody* ModulePhysics::CreateRectangleSensor(int x, int y, int width, int height)
+PhysBody* Physics::CreateRectangleSensor(int x, int y, int width, int height)
 {
 	b2BodyDef body;
 	body.type = b2_staticBody;
@@ -146,7 +146,7 @@ PhysBody* ModulePhysics::CreateRectangleSensor(int x, int y, int width, int heig
 	return pbody;
 }
 
-PhysBody* ModulePhysics::CreateChain(int x, int y, int* points, int size)
+PhysBody* Physics::CreateChain(int x, int y, int* points, int size)
 {
 	b2BodyDef body;
 	body.type = b2_dynamicBody;
@@ -181,7 +181,7 @@ PhysBody* ModulePhysics::CreateChain(int x, int y, int* points, int size)
 }
 
 // 
-update_status ModulePhysics::PostUpdate(float dt)
+update_status Physics::PostUpdate(float dt)
 {
 	if(App->input->GetKey(SDL_SCANCODE_F1) == KEY_DOWN)
 		debug = !debug;
@@ -281,7 +281,7 @@ update_status ModulePhysics::PostUpdate(float dt)
 
 
 // Called before quitting
-bool ModulePhysics::CleanUp()
+bool Physics::CleanUp()
 {
 	LOG("Destroying physics world");
 
@@ -353,7 +353,7 @@ int PhysBody::RayCast(int x1, int y1, int x2, int y2, float& normal_x, float& no
 	return ret;
 }
 
-void ModulePhysics::BeginContact(b2Contact* contact)
+void Physics::BeginContact(b2Contact* contact)
 {
 	PhysBody* physA = (PhysBody*)contact->GetFixtureA()->GetBody()->GetUserData();
 	PhysBody* physB = (PhysBody*)contact->GetFixtureB()->GetBody()->GetUserData();

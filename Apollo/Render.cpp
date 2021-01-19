@@ -1,10 +1,10 @@
 #include "Globals.h"
 #include "Application.h"
-#include "ModuleWindow.h"
-#include "ModuleRender.h"
+#include "Window.h"
+#include "Render.h"
 #include <math.h>
 
-ModuleRender::ModuleRender(Application* app, bool start_enabled) : Module(app, start_enabled)
+Render::Render(Application* app, bool start_enabled) : Module(app, start_enabled)
 {
 	renderer = NULL;
 	camera.x = camera.y = 0;
@@ -13,11 +13,11 @@ ModuleRender::ModuleRender(Application* app, bool start_enabled) : Module(app, s
 }
 
 // Destructor
-ModuleRender::~ModuleRender()
+Render::~Render()
 {}
 
 // Called before render is available
-bool ModuleRender::Init()
+bool Render::Init()
 {
 	LOG("Creating Renderer context");
 	bool ret = true;
@@ -40,7 +40,7 @@ bool ModuleRender::Init()
 }
 
 // PreUpdate: clear buffer
-update_status ModuleRender::PreUpdate(float dt)
+update_status Render::PreUpdate(float dt)
 {
 	SDL_SetRenderDrawColor(renderer, 0, 0, 0, 0);
 	SDL_RenderClear(renderer);
@@ -48,7 +48,7 @@ update_status ModuleRender::PreUpdate(float dt)
 }
 
 // Update: debug camera
-update_status ModuleRender::Update(float dt)
+update_status Render::Update(float dt)
 {
 	/*
 	int speed = 3;
@@ -69,14 +69,14 @@ update_status ModuleRender::Update(float dt)
 }
 
 // PostUpdate present buffer to screen
-update_status ModuleRender::PostUpdate(float dt)
+update_status Render::PostUpdate(float dt)
 {
 	SDL_RenderPresent(renderer);
 	return UPDATE_CONTINUE;
 }
 
 // Called before quitting
-bool ModuleRender::CleanUp()
+bool Render::CleanUp()
 {
 	LOG("Destroying renderer");
 
@@ -90,7 +90,7 @@ bool ModuleRender::CleanUp()
 }
 
 // Blit to screen
-bool ModuleRender::Blit(SDL_Texture* texture, int x, int y, SDL_Rect* section, float speed, double angle, int pivot_x, int pivot_y )
+bool Render::Blit(SDL_Texture* texture, int x, int y, SDL_Rect* section, float speed, double angle, int pivot_x, int pivot_y )
 {
 	bool ret = true;
 	SDL_Rect rect;
@@ -129,7 +129,7 @@ bool ModuleRender::Blit(SDL_Texture* texture, int x, int y, SDL_Rect* section, f
 	return ret;
 }
 
-bool ModuleRender::DrawQuad(const SDL_Rect& rect, Uint8 r, Uint8 g, Uint8 b, Uint8 a, bool filled, bool use_camera)
+bool Render::DrawQuad(const SDL_Rect& rect, Uint8 r, Uint8 g, Uint8 b, Uint8 a, bool filled, bool use_camera)
 {
 	bool ret = true;
 
@@ -156,7 +156,7 @@ bool ModuleRender::DrawQuad(const SDL_Rect& rect, Uint8 r, Uint8 g, Uint8 b, Uin
 	return ret;
 }
 
-bool ModuleRender::DrawLine(int x1, int y1, int x2, int y2, Uint8 r, Uint8 g, Uint8 b, Uint8 a, bool use_camera)
+bool Render::DrawLine(int x1, int y1, int x2, int y2, Uint8 r, Uint8 g, Uint8 b, Uint8 a, bool use_camera)
 {
 	bool ret = true;
 
@@ -179,7 +179,7 @@ bool ModuleRender::DrawLine(int x1, int y1, int x2, int y2, Uint8 r, Uint8 g, Ui
 	return ret;
 }
 
-bool ModuleRender::DrawCircle(int x, int y, int radius, Uint8 r, Uint8 g, Uint8 b, Uint8 a, bool use_camera)
+bool Render::DrawCircle(int x, int y, int radius, Uint8 r, Uint8 g, Uint8 b, Uint8 a, bool use_camera)
 {
 	bool ret = true;
 

@@ -4,11 +4,11 @@
 #include "p2List.h"
 #include "SDL\include\SDL.h"
 
-class ModuleTextures : public Module
+class Textures : public Module
 {
 public:
-	ModuleTextures(Application* app, bool start_enabled = true);
-	~ModuleTextures();
+	Textures(Application* app, bool start_enabled = true);
+	~Textures();
 
 	bool Init();
 	bool CleanUp();

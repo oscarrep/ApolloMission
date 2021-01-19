@@ -1,26 +1,26 @@
 
 #include "Module.h"
-#include "ModuleWindow.h"
-#include "ModuleRender.h"
-#include "ModuleTextures.h"
-#include "ModuleInput.h"
-#include "ModuleAudio.h"
-#include "ModulePlayer.h"
-#include "ModulePhysics.h"
-#include "ModuleScene.h"
+#include "Window.h"
+#include "Render.h"
+#include "Textures.h"
+#include "Input.h"
+#include "Audio.h"
+#include "Player.h"
+#include "Physics.h"
+#include "Scene.h"
 
 #include "Application.h"
 
 Application::Application()
 {
-	renderer = new ModuleRender(this);
-	window = new ModuleWindow(this);
-	textures = new ModuleTextures(this);
-	input = new ModuleInput(this);
-	audio = new ModuleAudio(this, true);
-	player = new ModulePlayer(this);
-	scene = new ModuleScene(this);
-	physics = new ModulePhysics(this);
+	renderer = new Render(this);
+	window = new Window(this);
+	textures = new Textures(this);
+	input = new Input(this);
+	audio = new Audio(this, true);
+	player = new Player(this);
+	scene = new Scene(this);
+	physics = new Physics(this);
 
 	// The order of calls is very important!
 	// Modules will Init() Start() and Update in this order

@@ -4,11 +4,11 @@
 
 #include "SDL\include\SDL.h"
 
-class ModuleRender : public Module
+class Render : public Module
 {
 public:
-	ModuleRender(Application* app, bool start_enabled = true);
-	~ModuleRender();
+	Render(Application* app, bool start_enabled = true);
+	~Render();
 
 	bool Init();
 	update_status PreUpdate(float dt);

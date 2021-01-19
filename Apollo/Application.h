@@ -4,26 +4,26 @@
 #include "Globals.h"
 
 class Module;
-class ModuleRender;
-class ModuleWindow;
-class ModuleTextures;
-class ModuleInput;
-class ModuleAudio;
-class ModulePlayer;
-class ModuleScene;
-class ModulePhysics;
+class Render;
+class Window;
+class Textures;
+class Input;
+class Audio;
+class Player;
+class Scene;
+class Physics;
 
 class Application
 {
 public:
-	ModuleRender* renderer;
-	ModuleWindow* window;
-	ModuleTextures* textures;
-	ModuleInput* input;
-	ModuleAudio* audio;
-	ModulePlayer* player;
-	ModuleScene* scene;
-	ModulePhysics* physics;
+	Render* renderer;
+	Window* window;
+	Textures* textures;
+	Input* input;
+	Audio* audio;
+	Player* player;
+	Scene* scene;
+	Physics* physics;
 
 private:
 

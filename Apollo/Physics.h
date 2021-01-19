@@ -31,11 +31,11 @@ public:
 };
 
 // Module --------------------------------------
-class ModulePhysics : public Module, public b2ContactListener
+class Physics : public Module, public b2ContactListener
 {
 public:
-	ModulePhysics(Application* app, bool start_enabled = true);
-	~ModulePhysics();
+	Physics(Application* app, bool start_enabled = true);
+	~Physics();
 
 	bool Start();
 	update_status PreUpdate(float dt);

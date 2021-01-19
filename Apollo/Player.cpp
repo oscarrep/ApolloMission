@@ -1,23 +1,23 @@
 #include "Globals.h"
 #include "Application.h"
-#include "ModulePlayer.h"
-#include "ModulePhysics.h"
-#include "ModuleInput.h"
-#include "ModuleTextures.h"
-#include "ModuleRender.h"
-#include "ModuleScene.h"
-#include "ModuleAudio.h"
+#include "Player.h"
+#include "Physics.h"
+#include "Input.h"
+#include "Textures.h"
+#include "Render.h"
+#include "Scene.h"
+#include "Audio.h"
 
 
-ModulePlayer::ModulePlayer(Application* app, bool start_enabled) : Module(app, start_enabled)
+Player::Player(Application* app, bool start_enabled) : Module(app, start_enabled)
 {
 }
 
-ModulePlayer::~ModulePlayer()
+Player::~Player()
 {}
 
 // Load assets
-bool ModulePlayer::Start()
+bool Player::Start()
 {
 	LOG("Loading player");
 
@@ -31,7 +31,7 @@ bool ModulePlayer::Start()
 }
 
 // Unload assets
-bool ModulePlayer::CleanUp()
+bool Player::CleanUp()
 {
 	LOG("Unloading player");
 
@@ -39,7 +39,7 @@ bool ModulePlayer::CleanUp()
 }
 
 // Update: draw background
-update_status ModulePlayer::Update(float dt)
+update_status Player::Update(float dt)
 {
 	if (App->input->GetKey(SDL_SCANCODE_W)==KEY_REPEAT) shipPos.y + 30;
 

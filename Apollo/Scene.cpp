@@ -1,23 +1,23 @@
 #include "Globals.h"
 #include "Application.h"
-#include "ModuleRender.h"
-#include "ModuleScene.h"
-#include "ModuleInput.h"
-#include "ModuleTextures.h"
-#include "ModuleAudio.h"
-#include "ModulePhysics.h"
+#include "Render.h"
+#include "Scene.h"
+#include "Input.h"
+#include "Textures.h"
+#include "Audio.h"
+#include "Physics.h"
 
-ModuleScene::ModuleScene(Application* app, bool start_enabled) : Module(app, start_enabled)
+Scene::Scene(Application* app, bool start_enabled) : Module(app, start_enabled)
 {
 	circle = box = ship = NULL;
 	background = NULL;
 }
 
-ModuleScene::~ModuleScene()
+Scene::~Scene()
 {}
 
 // Load assets
-bool ModuleScene::Start()
+bool Scene::Start()
 {
 	LOG("Loading Intro assets");
 	bool ret = true;
@@ -53,7 +53,7 @@ bool ModuleScene::Start()
 }
 
 // Load assets
-bool ModuleScene::CleanUp()
+bool Scene::CleanUp()
 {
 	LOG("Unloading Intro scene");
 
@@ -67,7 +67,7 @@ bool ModuleScene::CleanUp()
 }
 
 // Update: draw background
-update_status ModuleScene::Update(float dt)
+update_status Scene::Update(float dt)
 {
 	iPoint mouse;
 	mouse.x = App->input->GetMouseX();
@@ -115,15 +115,15 @@ update_status ModuleScene::Update(float dt)
 	return UPDATE_CONTINUE;
 }
 
-void ModuleScene::OnCollision(PhysBody* bodyA, PhysBody* bodyB)
+void Scene::OnCollision(PhysBody* bodyA, PhysBody* bodyB)
 {
 	/*App->audio->PlayFx(bonus_fx);*/
 }
 
 
-void ModuleScene::LoadEarth()
+void Scene::LoadEarth()
 {
-	earthAnim.PushBack({ 0,	  0,  500, 500 });
+	earthAnim.PushBack({ 0,	  0,  100, 100 });
 	earthAnim.PushBack({ 100,  0,  100, 100 });
 	earthAnim.PushBack({ 200,  0,  100, 100 });
 	earthAnim.PushBack({ 300,  0,  100, 100 });
@@ -140,6 +140,7 @@ void ModuleScene::LoadEarth()
 	earthAnim.PushBack({ 1400, 0,  100, 100 });
 	earthAnim.PushBack({ 1500, 0,  100, 100 });
 	earthAnim.PushBack({ 1600, 0,  100, 100 });
+	earthAnim.PushBack({ 1700, 0,  100, 100 });
 	earthAnim.PushBack({ 1800, 0,  100, 100 });
 	earthAnim.PushBack({ 1900, 0,  100, 100 });
 	earthAnim.PushBack({ 2000, 0,  100, 100 });
@@ -149,6 +150,7 @@ void ModuleScene::LoadEarth()
 	earthAnim.PushBack({ 2400, 0,  100, 100 });
 	earthAnim.PushBack({ 2500, 0,  100, 100 });
 	earthAnim.PushBack({ 2600, 0,  100, 100 });
+	earthAnim.PushBack({ 2700, 0,  100, 100 });
 	earthAnim.PushBack({ 2800, 0,  100, 100 });
 	earthAnim.PushBack({ 2900, 0,  100, 100 });
 	earthAnim.PushBack({ 3000, 0,  100, 100 });
@@ -158,6 +160,7 @@ void ModuleScene::LoadEarth()
 	earthAnim.PushBack({ 3400, 0,  100, 100 });
 	earthAnim.PushBack({ 3500, 0,  100, 100 });
 	earthAnim.PushBack({ 3600, 0,  100, 100 });
+	earthAnim.PushBack({ 3700, 0,  100, 100 });
 	earthAnim.PushBack({ 3800, 0,  100, 100 });
 	earthAnim.PushBack({ 3900, 0,  100, 100 });
 	earthAnim.PushBack({ 4000, 0,  100, 100 });
@@ -167,13 +170,14 @@ void ModuleScene::LoadEarth()
 	earthAnim.PushBack({ 4400, 0,  100, 100 });
 	earthAnim.PushBack({ 4500, 0,  100, 100 });
 	earthAnim.PushBack({ 4600, 0,  100, 100 });
+	earthAnim.PushBack({ 4700, 0,  100, 100 });
 	earthAnim.PushBack({ 4800, 0,  100, 100 });
 	earthAnim.PushBack({ 4900, 0,  100, 100 });
 	earthAnim.speed = 0.05f;
 
 }
 
-void ModuleScene::LoadMoon()
+void Scene::LoadMoon()
 {
 	moonAnim.PushBack({ 0,	  0,  100, 100 });
 	moonAnim.PushBack({ 100,  0,  100, 100 });
@@ -192,6 +196,7 @@ void ModuleScene::LoadMoon()
 	moonAnim.PushBack({ 1400, 0,  100, 100 });
 	moonAnim.PushBack({ 1500, 0,  100, 100 });
 	moonAnim.PushBack({ 1600, 0,  100, 100 });
+	moonAnim.PushBack({ 1700, 0,  100, 100 });
 	moonAnim.PushBack({ 1800, 0,  100, 100 });
 	moonAnim.PushBack({ 1900, 0,  100, 100 });
 	moonAnim.PushBack({ 2000, 0,  100, 100 });
@@ -201,6 +206,7 @@ void ModuleScene::LoadMoon()
 	moonAnim.PushBack({ 2400, 0,  100, 100 });
 	moonAnim.PushBack({ 2500, 0,  100, 100 });
 	moonAnim.PushBack({ 2600, 0,  100, 100 });
+	moonAnim.PushBack({ 2700, 0,  100, 100 });
 	moonAnim.PushBack({ 2800, 0,  100, 100 });
 	moonAnim.PushBack({ 2900, 0,  100, 100 });
 	moonAnim.PushBack({ 3000, 0,  100, 100 });
@@ -210,6 +216,7 @@ void ModuleScene::LoadMoon()
 	moonAnim.PushBack({ 3400, 0,  100, 100 });
 	moonAnim.PushBack({ 3500, 0,  100, 100 });
 	moonAnim.PushBack({ 3600, 0,  100, 100 });
+	moonAnim.PushBack({ 3700, 0,  100, 100 });
 	moonAnim.PushBack({ 3800, 0,  100, 100 });
 	moonAnim.PushBack({ 3900, 0,  100, 100 });
 	moonAnim.PushBack({ 4000, 0,  100, 100 });
@@ -219,12 +226,13 @@ void ModuleScene::LoadMoon()
 	moonAnim.PushBack({ 4400, 0,  100, 100 });
 	moonAnim.PushBack({ 4500, 0,  100, 100 });
 	moonAnim.PushBack({ 4600, 0,  100, 100 });
+	moonAnim.PushBack({ 4700, 0,  100, 100 });
 	moonAnim.PushBack({ 4800, 0,  100, 100 });
 	moonAnim.PushBack({ 4900, 0,  100, 100 });
 	moonAnim.speed = 0.1f;
 }
 
-void ModuleScene::LoadAsteroid()
+void Scene::LoadAsteroid()
 {
 	asteroidAnim.PushBack({ 0,	  0,  100, 100 });
 	asteroidAnim.PushBack({ 100,  0,  100, 100 });
@@ -243,6 +251,7 @@ void ModuleScene::LoadAsteroid()
 	asteroidAnim.PushBack({ 1400, 0,  100, 100 });
 	asteroidAnim.PushBack({ 1500, 0,  100, 100 });
 	asteroidAnim.PushBack({ 1600, 0,  100, 100 });
+	asteroidAnim.PushBack({ 1700, 0,  100, 100 });
 	asteroidAnim.PushBack({ 1800, 0,  100, 100 });
 	asteroidAnim.PushBack({ 1900, 0,  100, 100 });
 	asteroidAnim.PushBack({ 2000, 0,  100, 100 });
@@ -252,6 +261,7 @@ void ModuleScene::LoadAsteroid()
 	asteroidAnim.PushBack({ 2400, 0,  100, 100 });
 	asteroidAnim.PushBack({ 2500, 0,  100, 100 });
 	asteroidAnim.PushBack({ 2600, 0,  100, 100 });
+	asteroidAnim.PushBack({ 2700, 0,  100, 100 });
 	asteroidAnim.PushBack({ 2800, 0,  100, 100 });
 	asteroidAnim.PushBack({ 2900, 0,  100, 100 });
 	asteroidAnim.PushBack({ 3000, 0,  100, 100 });
@@ -261,6 +271,7 @@ void ModuleScene::LoadAsteroid()
 	asteroidAnim.PushBack({ 3400, 0,  100, 100 });
 	asteroidAnim.PushBack({ 3500, 0,  100, 100 });
 	asteroidAnim.PushBack({ 3600, 0,  100, 100 });
+	asteroidAnim.PushBack({ 3700, 0,  100, 100 });
 	asteroidAnim.PushBack({ 3800, 0,  100, 100 });
 	asteroidAnim.PushBack({ 3900, 0,  100, 100 });
 	asteroidAnim.PushBack({ 4000, 0,  100, 100 });
@@ -270,6 +281,7 @@ void ModuleScene::LoadAsteroid()
 	asteroidAnim.PushBack({ 4400, 0,  100, 100 });
 	asteroidAnim.PushBack({ 4500, 0,  100, 100 });
 	asteroidAnim.PushBack({ 4600, 0,  100, 100 });
+	asteroidAnim.PushBack({ 4700, 0,  100, 100 });
 	asteroidAnim.PushBack({ 4800, 0,  100, 100 });
 	asteroidAnim.PushBack({ 4900, 0,  100, 100 });
 	asteroidAnim.speed = 0.2f;

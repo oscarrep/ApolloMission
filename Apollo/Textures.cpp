@@ -1,21 +1,21 @@
 #include "Globals.h"
 #include "Application.h"
-#include "ModuleRender.h"
-#include "ModuleTextures.h"
+#include "Render.h"
+#include "Textures.h"
 
 #include "SDL_image/include/SDL_image.h"
 #pragma comment( lib, "SDL_image/libx86/SDL2_image.lib" )
 
-ModuleTextures::ModuleTextures(Application* app, bool start_enabled) : Module(app, start_enabled)
+Textures::Textures(Application* app, bool start_enabled) : Module(app, start_enabled)
 {
 }
 
 // Destructor
-ModuleTextures::~ModuleTextures()
+Textures::~Textures()
 {}
 
 // Called before render is available
-bool ModuleTextures::Init()
+bool Textures::Init()
 {
 	LOG("Init Image library");
 	bool ret = true;
@@ -34,7 +34,7 @@ bool ModuleTextures::Init()
 }
 
 // Called before quitting
-bool ModuleTextures::CleanUp()
+bool Textures::CleanUp()
 {
 	LOG("Freeing textures and Image library");
 
@@ -52,7 +52,7 @@ bool ModuleTextures::CleanUp()
 }
 
 // Load new texture from file path
-SDL_Texture* const ModuleTextures::Load(const char* path)
+SDL_Texture* const Textures::Load(const char* path)
 {
 	SDL_Texture* texture = NULL;
 	SDL_Surface* surface = IMG_Load(path);
@@ -81,7 +81,7 @@ SDL_Texture* const ModuleTextures::Load(const char* path)
 }
 
 // Free texture from memory
-void ModuleTextures::Unload(SDL_Texture* texture)
+void Textures::Unload(SDL_Texture* texture)
 {
 	p2List_item<SDL_Texture*>* item = textures.getFirst();
 
