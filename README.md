@@ -1,6 +1,30 @@
-# ApolloMission
+# {Project Name}
+
+## Description
+
+{project description}
+
+## Key Features
+
+ - {Feature01}
+ - {Feature02}
+ - {Feature03}
+ - {Feature04}
  
-earth, moon and asteroids: https://deep-fold.itch.io/pixel-planet-generator
-background: https://screamingbrainstudios.itch.io/seamless-space-backgrounds
-music: https://chiphead64.itch.io/space-soundtrack-01
-spaceship: https://bizmasterstudios.itch.io/spaceship-creation-kit
+## Controls
+
+ - {ControlsScheme}
+
+## Developers
+
+ - {Dev01} - {Role(s)}
+ - {Dev02} - {Role(s)}
+ - {Dev03} - {Role(s)}
+ - {Dev04} - {Role(s)}
+ - {Dev05} - {Role(s)}
+
+## License
+
+This project is licensed under an unmodified MIT license, which is an OSI-certified license that allows static linking with closed source software. Check [LICENSE](LICENSE) for further details.
+
+{AdditionalLicenses}
