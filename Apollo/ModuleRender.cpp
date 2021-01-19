@@ -40,7 +40,7 @@ bool ModuleRender::Init()
 }
 
 // PreUpdate: clear buffer
-update_status ModuleRender::PreUpdate()
+update_status ModuleRender::PreUpdate(float dt)
 {
 	SDL_SetRenderDrawColor(renderer, 0, 0, 0, 0);
 	SDL_RenderClear(renderer);
@@ -48,7 +48,7 @@ update_status ModuleRender::PreUpdate()
 }
 
 // Update: debug camera
-update_status ModuleRender::Update()
+update_status ModuleRender::Update(float dt)
 {
 	/*
 	int speed = 3;
@@ -69,7 +69,7 @@ update_status ModuleRender::Update()
 }
 
 // PostUpdate present buffer to screen
-update_status ModuleRender::PostUpdate()
+update_status ModuleRender::PostUpdate(float dt)
 {
 	SDL_RenderPresent(renderer);
 	return UPDATE_CONTINUE;

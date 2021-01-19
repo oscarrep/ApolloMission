@@ -40,5 +40,7 @@ public:
 
 private:
 
+	float dt = 0.0f;
+
 	void AddModule(Module* mod);
 };

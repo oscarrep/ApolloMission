@@ -38,8 +38,8 @@ public:
 	~ModulePhysics();
 
 	bool Start();
-	update_status PreUpdate();
-	update_status PostUpdate();
+	update_status PreUpdate(float dt);
+	update_status PostUpdate(float dt);
 	bool CleanUp();
 
 	PhysBody* CreateCircle(int x, int y, int radius);
@@ -50,10 +50,16 @@ public:
 	// b2ContactListener ---
 	void BeginContact(b2Contact* contact);
 
+	// big static circle as "ground" in the middle of the screen
+	int x = SCREEN_WIDTH / 2;
+	int y = SCREEN_HEIGHT / 1.5f;
+	int diameter = SCREEN_WIDTH / 2;
+	
+	b2World* world;
+
 private:
 
 	bool debug;
-	b2World* world;
 	b2MouseJoint* mouse_joint;
 	b2Body* ground;
 };

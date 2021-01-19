@@ -44,6 +44,11 @@ bool ModuleScene::Start()
 	backgroundrect.w = 1920;
 	backgroundrect.h = 1080;
 
+	shipRect.x = 0; 
+	shipRect.y = 0; 
+	shipRect.w = 52; 
+	shipRect.h = 106;
+
 	return ret;
 }
 
@@ -52,11 +57,17 @@ bool ModuleScene::CleanUp()
 {
 	LOG("Unloading Intro scene");
 
+	App->textures->Unload(background);
+	App->textures->Unload(asteroids);
+	App->textures->Unload(ship);
+	App->textures->Unload(moon);
+	App->textures->Unload(earth);
+
 	return true;
 }
 
 // Update: draw background
-update_status ModuleScene::Update()
+update_status ModuleScene::Update(float dt)
 {
 	iPoint mouse;
 	mouse.x = App->input->GetMouseX();
@@ -64,7 +75,7 @@ update_status ModuleScene::Update()
 
 	if(App->input->GetKey(SDL_SCANCODE_1) == KEY_DOWN)
 	{
-		circles.add(App->physics->CreateCircle(mouse.x, mouse.y, 50));
+		circles.add(App->physics->CreateCircle(mouse.x, mouse.y, 10));
 		circles.getLast()->data->listener = this;
 		//App->renderer->Blit(asteroids, mouse.x, mouse.y, &(asteroidAnim.GetCurrentFrame()));
 	}
@@ -77,8 +88,9 @@ update_status ModuleScene::Update()
 	if (App->input->GetKey(SDL_SCANCODE_3) == KEY_DOWN)
 	{
 		// Pivot -26, -53
+		//spaceship.add(App->physics->CreateChain(App->input->GetMouseX(), App->input->GetMouseY(), spaceshipChain, 34));
+		//App->renderer->Blit(ship, mouse.x, mouse.y, &shipRect, 1.0f, App->player.);
 
-		spaceship = App->physics->CreateChain(App->input->GetMouseX(), App->input->GetMouseY(), spaceshipChain, 34);
 	}
 
 	// All draw functions ------------------------------------------------------
@@ -92,15 +104,7 @@ update_status ModuleScene::Update()
 		c = c->next;
 	}
 
-	c = boxes.getFirst();
-
-	while(c != NULL)
-	{
-		int x, y;
-		c->data->GetPosition(x, y);
-		App->renderer->Blit(box, x, y, NULL, 1.0f, c->data->GetRotation());
-		c = c->next;
-	}
+	c = spaceship.getFirst();
 
 	App->renderer->Blit(background, 0, 0, &backgroundrect);
 	App->renderer->Blit(asteroids, 0, 0, &(asteroidAnim.GetCurrentFrame()));
@@ -119,7 +123,7 @@ void ModuleScene::OnCollision(PhysBody* bodyA, PhysBody* bodyB)
 
 void ModuleScene::LoadEarth()
 {
-	earthAnim.PushBack({ 0,	  0,  100, 100 });
+	earthAnim.PushBack({ 0,	  0,  500, 500 });
 	earthAnim.PushBack({ 100,  0,  100, 100 });
 	earthAnim.PushBack({ 200,  0,  100, 100 });
 	earthAnim.PushBack({ 300,  0,  100, 100 });
