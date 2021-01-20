@@ -46,6 +46,7 @@ public:
 	Animation fireAnim;
 
 	int bonus_fx;
+	int volume = 5;
 
 	SDL_Rect backgroundrect;
 	SDL_Rect shipRect;
