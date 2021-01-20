@@ -32,12 +32,13 @@ bool Scene::Awake()
 bool Scene::Start()
 {
 	app->audio->PlayMusic("Assets/Audio/space_riddle.ogg");
+	Mix_VolumeMusic(volume);
 
 	background = app->tex->Load("Assets/Textures/purple_nebula2.png");
-	asteroids = app->tex->Load("Assets/Textures/asteroid.png");
 	ship = app->tex->Load("Assets/Textures/spaceship.png");
 	moon = app->tex->Load("Assets/Textures/moon.png");
 	earth = app->tex->Load("Assets/Textures/earth.png");
+	asteroids = app->tex->Load("Assets/Textures/asteroid.png");
 
 	app->render->camera.x = app->render->camera.y = 0;
 
@@ -67,16 +68,18 @@ bool Scene::PreUpdate()
 // Called each loop iteration
 bool Scene::Update(float dt)
 {
-	if(app->input->GetKey(SDL_SCANCODE_UP) == KEY_REPEAT) app->render->camera.y += 1;
-	if(app->input->GetKey(SDL_SCANCODE_DOWN) == KEY_REPEAT) app->render->camera.y -= 1;
-	if(app->input->GetKey(SDL_SCANCODE_LEFT) == KEY_REPEAT) app->render->camera.x -= 1;
-	if(app->input->GetKey(SDL_SCANCODE_RIGHT) == KEY_REPEAT) app->render->camera.x += 1;
+	if (app->input->GetKey(SDL_SCANCODE_W) == KEY_REPEAT) app->render->camera.y += 1;
+	if (app->input->GetKey(SDL_SCANCODE_S) == KEY_REPEAT) app->render->camera.y -= 1;
+	if (app->input->GetKey(SDL_SCANCODE_A) == KEY_REPEAT) app->render->camera.x -= 1;
+	if (app->input->GetKey(SDL_SCANCODE_D) == KEY_REPEAT) app->render->camera.x += 1;
+	if (app->input->GetKey(SDL_SCANCODE_UP) == KEY_REPEAT) volume++;
+	if (app->input->GetKey(SDL_SCANCODE_DOWN) == KEY_REPEAT) volume--;
 
 	//app->render->DrawTexture(img, 380, 100);
 
 	app->render->DrawTexture(background, 0, 0, &backgroundrect);
 	app->render->DrawTexture(asteroids, 0, 0, &(asteroidAnim.GetCurrentFrame()));
-	app->render->DrawTexture(earth, 900, 900, &(earthAnim.GetCurrentFrame()));
+	app->render->DrawTexture(earth, 900, 500, &(earthAnim.GetCurrentFrame()));
 	app->render->DrawTexture(moon, 500, 0, &(moonAnim.GetCurrentFrame()));
 
 	return true;

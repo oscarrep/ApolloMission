@@ -15,6 +15,9 @@
     <ClCompile Include="Source\External\PugiXml\src\pugixml.cpp">
       <Filter>External\PugiXml</Filter>
     </ClCompile>
+    <ClCompile Include="Source\PhysicsEngine.cpp" />
+    <ClCompile Include="Source\Player.cpp" />
+    <ClCompile Include="Source\Body.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Source\Window.h" />
@@ -53,6 +56,9 @@
       <Filter>Utils</Filter>
     </ClInclude>
     <ClInclude Include="Source\Animation.h" />
+    <ClInclude Include="Source\PhysicsEngine.h" />
+    <ClInclude Include="Source\Player.h" />
+    <ClInclude Include="Source\Body.h" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="External">
