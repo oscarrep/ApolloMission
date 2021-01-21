@@ -59,18 +59,20 @@ bool Scene::Start()
 // Called each loop iteration
 bool Scene::PreUpdate()
 {
+	if (app->input->GetKey(SDL_SCANCODE_UP) == KEY_REPEAT) app->render->camera.y += app->player->moveSpeed;
+	if (app->input->GetKey(SDL_SCANCODE_DOWN) == KEY_REPEAT) app->render->camera.y -= app->player->moveSpeed;
+	if (app->input->GetKey(SDL_SCANCODE_LEFT) == KEY_REPEAT) app->render->camera.x -= app->player->moveSpeed;
+	if (app->input->GetKey(SDL_SCANCODE_RIGHT) == KEY_REPEAT) app->render->camera.x += app->player->moveSpeed;
+
+
 	return true;
 }
 
 // Called each loop iteration
 bool Scene::Update(float dt)
 {
-	if (app->input->GetKey(SDL_SCANCODE_W) == KEY_REPEAT) app->render->camera.y += 1;
-	if (app->input->GetKey(SDL_SCANCODE_S) == KEY_REPEAT) app->render->camera.y -= 1;
-	if (app->input->GetKey(SDL_SCANCODE_A) == KEY_REPEAT) app->render->camera.x -= 1;
-	if (app->input->GetKey(SDL_SCANCODE_D) == KEY_REPEAT) app->render->camera.x += 1;
-	if (app->input->GetKey(SDL_SCANCODE_UP) == KEY_REPEAT) volume++;
-	if (app->input->GetKey(SDL_SCANCODE_DOWN) == KEY_REPEAT) volume--;
+	if (app->input->GetKey(SDL_SCANCODE_P) == KEY_DOWN) { volume+=10; LOG("volume++"); }
+	if (app->input->GetKey(SDL_SCANCODE_O) == KEY_DOWN) { volume-=10; LOG("volume--"); }
 
 	//app->render->DrawTexture(img, 380, 100);
 

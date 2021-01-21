@@ -48,30 +48,39 @@ bool Player::PreUpdate()
 	currentAnim = &idleAnim;
 	if (app->input->GetKey(SDL_SCANCODE_A) == KEY_REPEAT) 
 	{
-
+		speed.x = -moveSpeed;
 	}
 	else if (app->input->GetKey(SDL_SCANCODE_A) == KEY_UP) 
 	{
+		speed.x = 0;
 	}
 
 	if (app->input->GetKey(SDL_SCANCODE_S) == KEY_REPEAT)
 	{
+		speed.y = moveSpeed;
+	}
+	else if (app->input->GetKey(SDL_SCANCODE_S) == KEY_UP)
+	{
+		speed.y = 0;
 	}
 
-	if (app->input->GetKey(SDL_SCANCODE_D) == KEY_REPEAT) {
+	if (app->input->GetKey(SDL_SCANCODE_D) == KEY_REPEAT) 
+	{
+		speed.x = moveSpeed;
 
 	}
-	else if (app->input->GetKey(SDL_SCANCODE_D) == KEY_UP) {
+	else if (app->input->GetKey(SDL_SCANCODE_D) == KEY_UP) 
+	{
+		speed.x = 0;
 	}
 
 	if (app->input->GetKey(SDL_SCANCODE_W) == KEY_REPEAT)
 	{
-
+		speed.y = -moveSpeed;
 	}
-
-	if (app->input->GetKey(SDL_SCANCODE_S) == KEY_REPEAT)
+	else if (app->input->GetKey(SDL_SCANCODE_W) == KEY_UP)
 	{
-
+		speed.y = 0;
 	}
 
 	if (app->input->GetKey(SDL_SCANCODE_Q) == KEY_DOWN)

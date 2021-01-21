@@ -50,9 +50,10 @@ public:
 	bool firstUpdate = true;
 	fPoint spawnPos = { 100, 100 };
 	fPoint position;
+	float moveSpeed = 30;
+
 
 private:
-	float moveSpeed = 30;
 	float contpeed = -25;
 
 	iPoint size;
