@@ -5,6 +5,7 @@
 #include "Render.h"
 #include "Window.h"
 #include "Scene.h"
+#include "Player.h"
 //#include "Physics.h"
 
 #include "Defs.h"
@@ -41,16 +42,12 @@ bool Scene::Start()
 	asteroids = app->tex->Load("Assets/Textures/asteroid.png");
 
 	app->render->camera.x = app->render->camera.y = 0;
+	app->player->Start();
 
 	backgroundrect.x = 0;
 	backgroundrect.y = 0;
 	backgroundrect.w = 1920;
 	backgroundrect.h = 1080;
-
-	shipRect.x = 0;
-	shipRect.y = 0;
-	shipRect.w = 52;
-	shipRect.h = 106;
 
 	LoadAsteroid();
 	LoadEarth();

@@ -48,7 +48,7 @@ public:
 	//Collider* colliderPlayer;
 
 	bool firstUpdate = true;
-	fPoint spawnPos;
+	fPoint spawnPos = { 100, 100 };
 	fPoint position;
 
 private:
@@ -60,6 +60,7 @@ private:
 	fPoint speed;
 	fPoint acceleration;
 
+	SDL_Rect shipRect;
 
 	SDL_Texture* characterTex = nullptr;
 	SDL_Texture* fire = nullptr;

@@ -28,8 +28,15 @@ bool Player::Start()
 	characterTex = app->tex->Load("Assets/textures/spaceship.png");
 	propulsion = app->tex->Load("Assets/textures/fire.png");
 
+	idleAnim.PushBack({ 0, 0, 52, 106 });
+
 	position.x = spawnPos.x;
 	position.y = spawnPos.y;
+
+	shipRect.x = 0;
+	shipRect.y = 0;
+	shipRect.w = 52;
+	shipRect.h = 106;
 
 	//colliderPlayer = app->collisions->AddCollider({0,0,0,0}, COLLIDER_TYPE::COLLIDER_PLAYER, this);
 

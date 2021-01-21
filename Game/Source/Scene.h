@@ -49,7 +49,6 @@ public:
 	int volume = 5;
 
 	SDL_Rect backgroundrect;
-	SDL_Rect shipRect;
 };
 
 #endif // __SCENE_H__
