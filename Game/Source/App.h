@@ -13,6 +13,8 @@ class Render;
 class Textures;
 class Audio;
 class Scene;
+//class Collisions;
+
 
 class App
 {
@@ -74,6 +76,7 @@ public:
 	Textures* tex;
 	Audio* audio;
 	Scene* scene;
+	//Collisions* collisions;
 
 private:
 
