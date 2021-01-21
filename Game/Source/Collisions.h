@@ -12,12 +12,17 @@ enum COLLIDER_TYPE
 	COLLIDER,
 	COLLIDER_PLAYER,
 	COLLIDER_ASTEROID,
+	COLLIDER_TORPEDO,
+	COLLIDER_PLANET,
 	COLLIDER_MAX
 };
 
 struct Collider
 {
 	SDL_Rect rect;
+	int radius;
+	int x;
+	int y;
 	bool to_delete = false;
 	COLLIDER_TYPE type;
 	Module* callback = nullptr;
@@ -25,6 +30,14 @@ struct Collider
 
 	Collider(SDL_Rect rect, COLLIDER_TYPE type, Module* callback = nullptr) :
 		rect(rect),
+		type(type),
+		callback(callback)
+	{}
+
+	Collider(int x, int y, int radius, COLLIDER_TYPE type, Module* callback = nullptr) :
+		radius(radius),
+		x(x),
+		y(y),
 		type(type),
 		callback(callback)
 	{}
@@ -38,6 +51,31 @@ struct Collider
 	bool CheckCollision(const SDL_Rect& r) const;
 };
 
+/*struct ColliderCircle
+{
+	int radius;
+	fPoint position;
+	bool to_delete = false;
+	COLLIDER_TYPE type;
+	Module* callback = nullptr;
+	float damage = 1.0;
+
+	ColliderCircle(int radius, fPoint position, COLLIDER_TYPE type, Module* callback = nullptr) :
+		radius(radius),
+		position(position),
+		type(type),
+		callback(callback)
+	{}
+
+	void SetPos(int x, int y)
+	{
+		position.x = x;
+		position.y = y;
+	}
+
+	bool CheckCollisionCircle(const SDL_Rect& r) const;
+};*/
+
 class Collisions : public Module
 {
 public:
@@ -50,6 +88,8 @@ public:
 	bool CleanUp() override;
 
 	Collider* AddCollider(SDL_Rect rect, COLLIDER_TYPE type, Module* callback = nullptr);
+	Collider* AddColliderCircle(int x, int y, int radius, COLLIDER_TYPE type, Module* callback = nullptr);
+
 	void DebugDraw();
 	Collider* colliders[MAX_COLLIDERS];
 	bool debug = true;

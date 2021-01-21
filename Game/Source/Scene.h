@@ -3,6 +3,7 @@
 
 #include "Module.h"
 #include "Animation.h"
+#include "Collisions.h"
 
 struct SDL_Texture;
 
@@ -44,6 +45,10 @@ public:
 	Animation moonAnim;
 	Animation earthAnim;
 	Animation fireAnim;
+
+	Collider* moonColl;
+	Collider* earthColl;
+	Collider* asteroidColl;
 
 	int bonus_fx;
 	int volume = 5;

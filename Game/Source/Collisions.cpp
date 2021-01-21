@@ -103,13 +103,27 @@ void Collisions::DebugDraw()
 		switch (colliders[i]->type)
 		{
 		case COLLIDER:
-			app->render->DrawRectangle(colliders[i]->rect, 0, 0, 255, alpha);
+			app->render->DrawRectangle(colliders[i]->rect, 0, 0, 255, alpha); //blue
 			break;
+
 		case COLLIDER_PLAYER:
-			app->render->DrawRectangle(colliders[i]->rect, 0, 255, 0, alpha);
+			app->render->DrawRectangle(colliders[i]->rect, 0, 255, 0, alpha); //green
 			break;
+
+		case COLLIDER_TORPEDO:
+			app->render->DrawRectangle(colliders[i]->rect, 255, 255, 255, alpha); //white
+			break;
+
 		case COLLIDER_ASTEROID:
-			app->render->DrawRectangle(colliders[i]->rect, 255, 0, 0, alpha);
+			app->render->DrawCircle(colliders[i]->x,
+				colliders[i]->y,
+				colliders[i]->radius, 255, 255, 0, alpha);	//yellow		
+			break;
+
+		case COLLIDER_PLANET:
+			app->render->DrawCircle(colliders[i]->x,
+				colliders[i]->y, 
+				colliders[i]->radius, 255, 0, 0, alpha); //red
 			break;
 		}
 	}
@@ -142,6 +156,23 @@ Collider* Collisions::AddCollider(SDL_Rect rect, COLLIDER_TYPE type, Module* cal
 		if (colliders[i] == nullptr)
 		{
 			ret = colliders[i] = new Collider(rect, type, callback);
+			LOG("new collider");
+			break;
+		}
+	}
+
+	return ret;
+}
+
+Collider* Collisions::AddColliderCircle(int x, int y, int radius, COLLIDER_TYPE type, Module* callback)
+{
+	Collider* ret = nullptr;
+
+	for (uint i = 0; i < MAX_COLLIDERS; ++i)
+	{
+		if (colliders[i] == nullptr)
+		{
+			ret = colliders[i] = new Collider(x, y, radius, type, callback);
 			LOG("new collider");
 			break;
 		}

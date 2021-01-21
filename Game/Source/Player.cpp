@@ -38,6 +38,7 @@ bool Player::Start()
 	shipRect.w = 52;
 	shipRect.h = 106;
 
+
 	colliderPlayer = app->collisions->AddCollider(shipRect, COLLIDER_TYPE::COLLIDER_PLAYER, this);
 
 	return true;
@@ -152,7 +153,6 @@ bool Player::Update(float dt)
 	position.y = position.y + speed.y * deltaTime;
 
 	colliderPlayer->SetPos(position.x, position.y);
-
 
 	state = FALLING;
 
