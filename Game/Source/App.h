@@ -14,7 +14,7 @@ class Textures;
 class Audio;
 class Scene;
 class Player;
-//class Collisions;
+class Collisions;
 
 
 class App
@@ -78,7 +78,7 @@ public:
 	Audio* audio;
 	Scene* scene;
 	Player* player;
-	//Collisions* collisions;
+	Collisions* collisions;
 
 private:
 

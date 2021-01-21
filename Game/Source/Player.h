@@ -45,7 +45,7 @@ public:
 	fPoint GetSpeed() const;
 
 	//void OnCollision(Collider* c1, Collider* c2);
-	//Collider* colliderPlayer;
+	Collider* colliderPlayer;
 
 	bool firstUpdate = true;
 	fPoint spawnPos = { 100, 100 };

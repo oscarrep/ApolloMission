@@ -1,9 +1,10 @@
-/*#include "App.h"
+#include "App.h"
 #include "Input.h"
 #include "Render.h"
 #include "Collisions.h"
 #include "Player.h"
 
+#include "Log.h"
 
 Collisions::Collisions()
 {
@@ -141,6 +142,7 @@ Collider* Collisions::AddCollider(SDL_Rect rect, COLLIDER_TYPE type, Module* cal
 		if (colliders[i] == nullptr)
 		{
 			ret = colliders[i] = new Collider(rect, type, callback);
+			LOG("new collider");
 			break;
 		}
 	}
@@ -154,4 +156,4 @@ bool Collider::CheckCollision(const SDL_Rect& r) const
 		rect.x + rect.w > r.x &&
 		rect.y < r.y + r.h &&
 		rect.h + rect.y > r.y);
-}*/
+}

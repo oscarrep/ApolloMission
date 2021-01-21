@@ -61,8 +61,8 @@ bool Scene::PreUpdate()
 {
 	if (app->input->GetKey(SDL_SCANCODE_UP) == KEY_REPEAT) app->render->camera.y += app->player->moveSpeed;
 	if (app->input->GetKey(SDL_SCANCODE_DOWN) == KEY_REPEAT) app->render->camera.y -= app->player->moveSpeed;
-	if (app->input->GetKey(SDL_SCANCODE_LEFT) == KEY_REPEAT) app->render->camera.x -= app->player->moveSpeed;
-	if (app->input->GetKey(SDL_SCANCODE_RIGHT) == KEY_REPEAT) app->render->camera.x += app->player->moveSpeed;
+	if (app->input->GetKey(SDL_SCANCODE_LEFT) == KEY_REPEAT) app->render->camera.x += app->player->moveSpeed;
+	if (app->input->GetKey(SDL_SCANCODE_RIGHT) == KEY_REPEAT) app->render->camera.x -= app->player->moveSpeed;
 
 
 	return true;
@@ -74,12 +74,10 @@ bool Scene::Update(float dt)
 	if (app->input->GetKey(SDL_SCANCODE_P) == KEY_DOWN) { volume+=10; LOG("volume++"); }
 	if (app->input->GetKey(SDL_SCANCODE_O) == KEY_DOWN) { volume-=10; LOG("volume--"); }
 
-	//app->render->DrawTexture(img, 380, 100);
-
 	app->render->DrawTexture(background, 0, 0, &backgroundrect);
 	app->render->DrawTexture(asteroids, 0, 0, &(asteroidAnim.GetCurrentFrame()));
-	app->render->DrawTexture(earth, 900, 500, &(earthAnim.GetCurrentFrame()));
-	app->render->DrawTexture(moon, 500, 0, &(moonAnim.GetCurrentFrame()));
+	app->render->DrawTexture(earth, 100, 10000, &(earthAnim.GetCurrentFrame()));
+	app->render->DrawTexture(moon, 900, -500, &(moonAnim.GetCurrentFrame()));
 
 	return true;
 }
