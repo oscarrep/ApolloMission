@@ -33,7 +33,6 @@ bool Scene::Awake()
 bool Scene::Start()
 {
 	app->audio->PlayMusic("Assets/Audio/space_riddle.ogg");
-	Mix_VolumeMusic(volume);
 
 	background = app->tex->Load("Assets/Textures/purple_nebula2.png");
 	ship = app->tex->Load("Assets/Textures/spaceship.png");
@@ -59,11 +58,6 @@ bool Scene::Start()
 // Called each loop iteration
 bool Scene::PreUpdate()
 {
-	if (app->input->GetKey(SDL_SCANCODE_UP) == KEY_REPEAT) app->render->camera.y += app->player->moveSpeed;
-	if (app->input->GetKey(SDL_SCANCODE_DOWN) == KEY_REPEAT) app->render->camera.y -= app->player->moveSpeed;
-	if (app->input->GetKey(SDL_SCANCODE_LEFT) == KEY_REPEAT) app->render->camera.x += app->player->moveSpeed;
-	if (app->input->GetKey(SDL_SCANCODE_RIGHT) == KEY_REPEAT) app->render->camera.x -= app->player->moveSpeed;
-
 
 	return true;
 }
@@ -71,8 +65,10 @@ bool Scene::PreUpdate()
 // Called each loop iteration
 bool Scene::Update(float dt)
 {
-	if (app->input->GetKey(SDL_SCANCODE_P) == KEY_DOWN) { volume+=10; LOG("volume++"); }
-	if (app->input->GetKey(SDL_SCANCODE_O) == KEY_DOWN) { volume-=10; LOG("volume--"); }
+	Mix_VolumeMusic(volume);
+
+	if (app->input->GetKey(SDL_SCANCODE_UP) == KEY_DOWN) { volume++; LOG("volume--"); }
+	if (app->input->GetKey(SDL_SCANCODE_DOWN) == KEY_DOWN) { volume--; LOG("volume++"); }
 
 	app->render->DrawTexture(background, 0, 0, &backgroundrect);
 	app->render->DrawTexture(asteroids, 0, 0, &(asteroidAnim.GetCurrentFrame()));

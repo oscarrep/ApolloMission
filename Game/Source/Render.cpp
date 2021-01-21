@@ -1,11 +1,14 @@
 #include "App.h"
 #include "Window.h"
 #include "Render.h"
+#include "Player.h"
 
 #include "Defs.h"
 #include "Log.h"
 
 #define VSYNC true
+#define CAMERA_MARGE_L 150
+#define CAMERA_MARGE_XL 330
 
 Render::Render() : Module()
 {
@@ -70,6 +73,7 @@ bool Render::PreUpdate()
 
 bool Render::Update(float dt)
 {
+	CameraPos();
 	return true;
 }
 
@@ -225,4 +229,27 @@ bool Render::DrawCircle(int x, int y, int radius, Uint8 r, Uint8 g, Uint8 b, Uin
 	}
 
 	return ret;
+}
+
+void Render::CameraPos()
+{
+	uint scale = app->win->GetScale();
+	SDL_Rect rect = { app->player->colliderPlayer->rect.x * scale ,app->player->colliderPlayer->rect.y * scale ,app->player->colliderPlayer->rect.w * scale ,app->player->colliderPlayer->rect.h * scale };
+	SDL_Rect cam = { -camera.x * scale ,-camera.y * scale ,camera.w * scale ,camera.h * scale };
+
+	if (cam.x + cam.w - (float)CAMERA_MARGE_XL < rect.x + rect.w)
+		cam.x = rect.x + rect.w + (float)CAMERA_MARGE_XL - cam.w;
+
+	else if (cam.x + (float)CAMERA_MARGE_L > rect.x)
+		cam.x = rect.x - (float)CAMERA_MARGE_L;
+
+	if (cam.y + cam.h - (float)CAMERA_MARGE_L < rect.y + rect.h)
+		cam.y = (rect.y + rect.h + (float)CAMERA_MARGE_L - cam.h);
+
+	else if (cam.y + (float)CAMERA_MARGE_XL > rect.y)
+		cam.y = (rect.y - (float)CAMERA_MARGE_XL);
+
+	camera.x = -cam.x;
+	camera.y = -cam.y;
+
 }
