@@ -6,6 +6,7 @@
 #include "Window.h"
 #include "Scene.h"
 #include "Player.h"
+#include "Map.h"
 //#include "Physics.h"
 
 #include "Defs.h"
@@ -33,7 +34,7 @@ bool Scene::Awake()
 bool Scene::Start()
 {
 	app->audio->PlayMusic("Assets/Audio/space_riddle.ogg");
-
+	app->map->Load("level2.tmx");
 	background = app->tex->Load("Assets/Textures/purple_nebula2.png");
 	ship = app->tex->Load("Assets/Textures/spaceship.png");
 	moon = app->tex->Load("Assets/Textures/moon.png");
@@ -74,9 +75,10 @@ bool Scene::Update(float dt)
 
 	app->render->DrawTexture(background, 0, 0, &backgroundrect);
 	app->render->DrawTexture(asteroids, 0, 0, &(asteroidAnim.GetCurrentFrame()));
-	app->render->DrawTexture(earth, 100, 10000, &(earthAnim.GetCurrentFrame()));
-	app->render->DrawTexture(moon, 900, -500, &(moonAnim.GetCurrentFrame()));
+	app->render->DrawTexture(earth, 100, 500, &(earthAnim.GetCurrentFrame()));
+	app->render->DrawTexture(moon, 900, -5000, &(moonAnim.GetCurrentFrame()));
 
+	app->map->Draw();
 	return true;
 }
 

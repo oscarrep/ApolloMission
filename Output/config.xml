@@ -17,4 +17,8 @@
     <resizable value="false"/>
     <fullscreen_window value="false"/>
   </window>
+
+  <map>
+    <folder>Assets/Maps/</folder>
+  </map>
 </config>

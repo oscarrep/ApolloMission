@@ -14,14 +14,37 @@ Collisions::Collisions()
 	matrix[COLLIDER][COLLIDER] = false;
 	matrix[COLLIDER][COLLIDER_PLAYER] = true;
 	matrix[COLLIDER][COLLIDER_ASTEROID] = false;
+	matrix[COLLIDER][COLLIDER_PLANET] = false;
+	matrix[COLLIDER][COLLIDER_TORPEDO] = false;
+
+
+	matrix[COLLIDER_TORPEDO][COLLIDER] = false;
+	matrix[COLLIDER_TORPEDO][COLLIDER_PLAYER] = true;
+	matrix[COLLIDER_TORPEDO][COLLIDER_ASTEROID] = false;
+	matrix[COLLIDER_TORPEDO][COLLIDER_PLANET] = false;
+	matrix[COLLIDER_TORPEDO][COLLIDER_TORPEDO] = false;
+
 
 	matrix[COLLIDER_PLAYER][COLLIDER] = true;
 	matrix[COLLIDER_PLAYER][COLLIDER_PLAYER] = false;
 	matrix[COLLIDER_PLAYER][COLLIDER_ASTEROID] = true;
+	matrix[COLLIDER_PLAYER][COLLIDER_PLANET] = true;
+	matrix[COLLIDER_PLAYER][COLLIDER_TORPEDO] = false;
+
+
+	matrix[COLLIDER_PLANET][COLLIDER] = false;
+	matrix[COLLIDER_PLANET][COLLIDER_PLAYER] = true;
+	matrix[COLLIDER_PLANET][COLLIDER_ASTEROID] = true;
+	matrix[COLLIDER_PLANET][COLLIDER_PLANET] = false;
+	matrix[COLLIDER_PLANET][COLLIDER_TORPEDO] = false;
+
 
 	matrix[COLLIDER_ASTEROID][COLLIDER] = false;
 	matrix[COLLIDER_ASTEROID][COLLIDER_PLAYER] = true;
-	matrix[COLLIDER_ASTEROID][COLLIDER_ASTEROID] = false;
+	matrix[COLLIDER_ASTEROID][COLLIDER_ASTEROID] = true;
+	matrix[COLLIDER_ASTEROID][COLLIDER_PLANET] = true;
+	matrix[COLLIDER_ASTEROID][COLLIDER_TORPEDO] = true;
+
 }
 
 
@@ -156,7 +179,7 @@ Collider* Collisions::AddCollider(SDL_Rect rect, COLLIDER_TYPE type, Module* cal
 		if (colliders[i] == nullptr)
 		{
 			ret = colliders[i] = new Collider(rect, type, callback);
-			LOG("new collider");
+			LOG("new collider rect");
 			break;
 		}
 	}
@@ -173,7 +196,7 @@ Collider* Collisions::AddColliderCircle(int x, int y, int radius, COLLIDER_TYPE 
 		if (colliders[i] == nullptr)
 		{
 			ret = colliders[i] = new Collider(x, y, radius, type, callback);
-			LOG("new collider");
+			LOG("new collider circle");
 			break;
 		}
 	}
