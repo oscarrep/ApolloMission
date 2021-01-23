@@ -55,7 +55,7 @@ bool Collisions::PreUpdate()
 {
 	for (uint i = 0; i < MAX_COLLIDERS; ++i)
 	{
-		if (colliders[i] != nullptr && colliders[i]->to_delete == true)
+		if (colliders[i] != nullptr && colliders[i]->toDelete == true)
 		{
 			delete colliders[i];
 			colliders[i] = nullptr;
@@ -104,6 +104,20 @@ bool Collisions::Update(float dt)
 	// To be implemented debug capabilities for painting colliders and godmode
 	DebugDraw();
 	//GodMode();
+
+	for (uint i = 0; i < MAX_COLLIDERS; ++i)
+	{
+		if (colliders[i] != nullptr)
+		{
+			if (colliders[i]->toDelete)
+			{
+				delete colliders[i];
+				colliders[i] = nullptr;
+			}
+
+		}
+
+	}
 
 	return true;
 

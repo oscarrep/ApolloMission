@@ -21,36 +21,11 @@ public:
 	bool PostUpdate();
 	bool CleanUp();
 
-	void LoadEarth();
-	void LoadMoon();
-	void LoadAsteroid();
-
 private:
 	SDL_Texture* img;
 
 public:
 
-	SDL_Texture* circle;
-	SDL_Texture* box;
-	SDL_Texture* rick;
-	SDL_Texture* background;
-	SDL_Texture* ship;
-	SDL_Texture* earth;
-	SDL_Texture* moon;
-	SDL_Texture* asteroids;
-	SDL_Texture* satellite;
-	SDL_Texture* fire;
-
-	Animation asteroidAnim;
-	Animation moonAnim;
-	Animation earthAnim;
-	Animation fireAnim;
-
-	Collider* moonColl;
-	Collider* earthColl;
-	Collider* asteroidColl;
-
-	int bonus_fx;
 	int volume = 5;
 
 	SDL_Rect backgroundrect;

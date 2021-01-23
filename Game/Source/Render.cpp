@@ -2,6 +2,9 @@
 #include "Window.h"
 #include "Render.h"
 #include "Player.h"
+#include "Input.h"
+#include "EntityManager.h"
+#include "Collisions.h"
 
 #include "Defs.h"
 #include "Log.h"
@@ -60,7 +63,7 @@ bool Render::Start()
 {
 	LOG("render start");
 	// back background
-	SDL_RenderGetViewport(renderer, &viewport);
+	// SDL_RenderGetViewport(renderer, &viewport);
 	return true;
 }
 
@@ -68,12 +71,12 @@ bool Render::Start()
 bool Render::PreUpdate()
 {
 	SDL_RenderClear(renderer);
+	CameraPos();
 	return true;
 }
 
 bool Render::Update(float dt)
 {
-	CameraPos();
 	return true;
 }
 
@@ -105,6 +108,15 @@ void Render::SetViewPort(const SDL_Rect& rect)
 void Render::ResetViewPort()
 {
 	SDL_RenderSetViewport(renderer, &viewport);
+}
+
+bool Render::IsOnCamera(const int& x, const int& y, const int& w, const int& h, const float& speed) const
+{
+	uint scale = app->win->GetScale();
+	SDL_Rect rect = { x * scale / speed,y * scale,w * scale / speed,h * scale };
+	SDL_Rect cam = { -camera.x * scale,-camera.y * scale,camera.w * scale / speed,camera.h * scale };
+
+	return SDL_HasIntersection(&rect, &cam);
 }
 
 // Blit to screen
@@ -233,8 +245,14 @@ bool Render::DrawCircle(int x, int y, int radius, Uint8 r, Uint8 g, Uint8 b, Uin
 
 void Render::CameraPos()
 {
-	uint scale = app->win->GetScale();
-	SDL_Rect rect = { app->player->colliderPlayer->rect.x * scale ,app->player->colliderPlayer->rect.y * scale ,app->player->colliderPlayer->rect.w * scale ,app->player->colliderPlayer->rect.h * scale };
+	/*uint scale = app->win->GetScale();
+	SDL_Rect rect = 
+	{ 
+		app->entityManager->player->collider->rect.x * scale,
+		app->entityManager->player->collider->rect.y * scale,
+		app->entityManager->player->collider->rect.x * scale,
+		app->entityManager->player->collider->rect.y * scale
+	};
 	SDL_Rect cam = { -camera.x * scale ,-camera.y * scale ,camera.w * scale ,camera.h * scale };
 
 	if (cam.x + cam.w - (float)CAMERA_MARGE_XL < rect.x + rect.w)
@@ -250,6 +268,9 @@ void Render::CameraPos()
 		cam.y = (rect.y - (float)CAMERA_MARGE_XL);
 
 	camera.x = -cam.x;
-	camera.y = -cam.y;
+	camera.y = -cam.y;*/
+
+	if (app->entityManager->player->position.y < 220) app->render->camera.y = -(app->entityManager->player->position.y - 220);
+	if (app->entityManager->player->position.x < 220) app->render->camera.x = -(app->entityManager->player->position.x - 220);
 
 }
