@@ -117,7 +117,6 @@ public:
 	MapData data;
 	Collider* collider;
 
-
 private:
 
 	pugi::xml_document	mapFile;

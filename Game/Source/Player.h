@@ -48,7 +48,7 @@ public:
 	Collider* colliderPlayer;
 
 	bool firstUpdate = true;
-	fPoint spawnPos = { 100, 100 };
+	fPoint spawnPos = { 1050, -4500 };
 	fPoint position;
 	float moveSpeed = 90;
 	float gravity = 90;

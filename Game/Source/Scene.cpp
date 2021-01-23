@@ -41,7 +41,8 @@ bool Scene::Start()
 	earth = app->tex->Load("Assets/Textures/earth.png");
 	asteroids = app->tex->Load("Assets/Textures/asteroid.png");
 
-	app->render->camera.x = app->render->camera.y = 0;
+	app->render->camera.x=300;
+	app->render->camera.y = -4000;
 	app->player->Start();
 
 	backgroundrect.x = 0;

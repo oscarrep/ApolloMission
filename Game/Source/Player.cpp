@@ -38,7 +38,6 @@ bool Player::Start()
 	shipRect.w = 52;
 	shipRect.h = 106;
 
-
 	colliderPlayer = app->collisions->AddCollider(shipRect, ColliderType::COLLIDER_PLAYER, this);
 
 	return true;
@@ -108,7 +107,6 @@ bool Player::Update(float dt)
 	{
 	case IDLE:
 		acceleration.y = 0;
-		speed.y = 0;
 		break;
 
 	case FIRING:
@@ -203,7 +201,7 @@ void Player::OnCollision(Collider* col1, Collider* col2)
 			{
 				state = IDLE;
 				speed.y = 0;
-
+				if (app->input->GetKey(SDL_SCANCODE_W) == KEY_REPEAT) speed.y = -moveSpeed;
 			}
 
 			else if (colliderPlayer->rect.y < col1->rect.y + col1->rect.h && colliderPlayer->rect.y + colliderPlayer->rect.h > col1->rect.y + col1->rect.h || 
