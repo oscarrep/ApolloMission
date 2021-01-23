@@ -51,6 +51,7 @@ public:
 	fPoint spawnPos = { 100, 100 };
 	fPoint position;
 	float moveSpeed = 90;
+	float gravity = 90;
 
 
 private:

@@ -46,6 +46,8 @@ bool Player::Start()
 
 bool Player::PreUpdate()
 {
+	speed.y = gravity;
+
 	currentAnim = &idleAnim;
 	if (app->input->GetKey(SDL_SCANCODE_A) == KEY_REPEAT) 
 	{
@@ -202,7 +204,6 @@ void Player::OnCollision(Collider* col1, Collider* col2)
 				state = IDLE;
 				speed.y = 0;
 
-
 			}
 
 			else if (colliderPlayer->rect.y < col1->rect.y + col1->rect.h && colliderPlayer->rect.y + colliderPlayer->rect.h > col1->rect.y + col1->rect.h || 
@@ -210,7 +211,7 @@ void Player::OnCollision(Collider* col1, Collider* col2)
 			{
 				state = FALLING;
 				speed.y = 0;
-
+				if (speed.y == 0)speed.y = gravity;
 
 			}
 		}
