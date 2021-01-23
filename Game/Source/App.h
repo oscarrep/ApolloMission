@@ -3,6 +3,7 @@
 
 #include "Module.h"
 #include "List.h"
+
 #include "PugiXml/src/pugixml.hpp"
 
 // Modules
@@ -13,7 +14,7 @@ class Textures;
 class Audio;
 class Scene;
 class Map;
-class EntityManager;
+class Player;
 class Collisions;
 
 
@@ -78,7 +79,7 @@ public:
 	Audio* audio;
 	Scene* scene;
 	Map* map;
-	EntityManager* entityManager;
+	Player* player;
 	Collisions* collisions;
 
 private:

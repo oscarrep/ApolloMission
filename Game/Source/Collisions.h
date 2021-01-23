@@ -6,8 +6,6 @@
 #include "Module.h"
 #include "SDL/include/SDL_rect.h"
 
-struct SDL_Rect;
-
 enum COLLIDER_TYPE
 {
 	COLLIDER_NONE = -1,
@@ -25,7 +23,7 @@ struct Collider
 	int radius;
 	int x;
 	int y;
-	bool toDelete = false;
+	bool to_delete = false;
 	COLLIDER_TYPE type;
 	Module* callback = nullptr;
 	float damage = 1.0;

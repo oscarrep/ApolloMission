@@ -9,20 +9,17 @@
 #include "Animation.h"
 #include "Collisions.h"
 #include "Window.h"
-#include "Entity.h"
-#include "EntityManager.h"
 #include "SString.h"
 
-Player::Player(const fPoint& position) : Entity(position, "player", EntityType::PLAYER)
+Player::Player() : Module()
 {
-	name.Create("player");
 
-	AwakeEntity(entNode);
 }
 
-void Player::Awake()
+bool Player::Awake()
 {
 
+	return true;
 }
 
 
@@ -31,21 +28,25 @@ bool Player::Start()
 	characterTex = app->tex->Load("Assets/textures/spaceship.png");
 	propulsion = app->tex->Load("Assets/textures/fire.png");
 
-	shipRect.x = spawnPos.x;
-	shipRect.y = spawnPos.y;
+	idleAnim.PushBack({ 0, 0, 52, 106 });
+
+	position.x = spawnPos.x;
+	position.y = spawnPos.y;
+
+	shipRect.x = 0;
+	shipRect.y = 0;
 	shipRect.w = 52;
 	shipRect.h = 106;
 
-	position = spawnPos;
-	colliderPlayer = app->collisions->AddCollider(shipRect, COLLIDER_TYPE::COLLIDER_PLAYER, (Module*)app->entityManager);
+
+	colliderPlayer = app->collisions->AddCollider(shipRect, COLLIDER_TYPE::COLLIDER_PLAYER, this);
 
 	return true;
 }
 
-void Player::PreUpdate(float dt)
+bool Player::PreUpdate()
 {
 	currentAnim = &idleAnim;
-
 	if (app->input->GetKey(SDL_SCANCODE_A) == KEY_REPEAT) 
 	{
 		speed.x = -moveSpeed;
@@ -87,9 +88,13 @@ void Player::PreUpdate(float dt)
 	{
 
 	}
+
+
+
+	return true;
 }
 
-void Player::Update(float dt)
+bool Player::Update(float dt)
 {
 
 	deltaTime = SDL_GetTicks() - lastTime;
@@ -153,20 +158,23 @@ void Player::Update(float dt)
 
 	speed.x = 0;
 
+	return true;
 }
 
-void Player::PostUpdate(float dt)
+bool Player::PostUpdate()
 {
-	//app->render->DrawTexture(characterTex, (int)position.x, (int)position.y, &currentAnim->GetCurrentFrame(), 1.0f);
+	app->render->DrawTexture(characterTex, (int)position.x, (int)position.y, &currentAnim->GetCurrentFrame(), 1.0f);
 
+	return true;
 }
 
-void Player::CleanUp()
+bool Player::CleanUp()
 {
 	app->tex->UnLoad(characterTex);
-	if (colliderPlayer != nullptr)
-		colliderPlayer->toDelete = true;
+	/*if (colliderPlayer != nullptr)
+		colliderPlayer->to_delete = true;*/
 
+	return true;
 }
 
 fPoint Player::GetPos() const
@@ -177,58 +185,4 @@ fPoint Player::GetPos() const
 fPoint Player::GetSpeed() const
 {
 	return speed;
-}
-
-void Player::OnCollision(Collider* col1, Collider* col2)
-{
-
-	if (col1->type == COLLIDER_TYPE::COLLIDER || col2->type == COLLIDER_TYPE::COLLIDER)
-	{
-		//vertical collisions
-		if (colliderPlayer->rect.x < col1->rect.x + col1->rect.w && colliderPlayer->rect.x + colliderPlayer->rect.w > col1->rect.x 
-			|| colliderPlayer->rect.x < col2->rect.x + col2->rect.w && colliderPlayer->rect.x + colliderPlayer->rect.w > col2->rect.x)
-		{
-			if (colliderPlayer->rect.y + colliderPlayer->rect.h > col1->rect.y && colliderPlayer->rect.y < col1->rect.y 
-				|| colliderPlayer->rect.y + colliderPlayer->rect.h > col2->rect.y && colliderPlayer->rect.y < col2->rect.y)
-			{
-				state = IDLE;
-				speed.y = 0;
-			}
-
-			else if (colliderPlayer->rect.y < col1->rect.y + col1->rect.h && colliderPlayer->rect.y + colliderPlayer->rect.h > col1->rect.y + col1->rect.h 
-				|| colliderPlayer->rect.y < col2->rect.y + col2->rect.h && colliderPlayer->rect.y + colliderPlayer->rect.h > col2->rect.y + col2->rect.h)
-			{
-				state = FALLING;
-				speed.y = 0;
-
-			}
-		}
-
-		//horitzontal collisions
-		if (colliderPlayer->rect.y < col1->rect.y + col1->rect.h - 5 && colliderPlayer->rect.y + colliderPlayer->rect.h > col1->rect.y + 5 
-			|| colliderPlayer->rect.y < col2->rect.y + col2->rect.h - 5 && colliderPlayer->rect.y + colliderPlayer->rect.h > col2->rect.y + 5)
-		{
-
-			//LEFT
-			if (colliderPlayer->rect.x < col1->rect.x + col1->rect.w && colliderPlayer->rect.x + colliderPlayer->rect.w > col1->rect.x + col1->rect.w 
-				|| colliderPlayer->rect.x < col2->rect.x + col2->rect.w && colliderPlayer->rect.x + colliderPlayer->rect.w > col2->rect.x + col2->rect.w)
-			{
-				speed.x = moveSpeed;
-			}
-
-			//RIGHT
-			else if (colliderPlayer->rect.x + colliderPlayer->rect.w > col1->rect.x && colliderPlayer->rect.x < col1->rect.x 
-				|| colliderPlayer->rect.x + colliderPlayer->rect.w > col2->rect.x && colliderPlayer->rect.x < col2->rect.x)
-			{
-				speed.x = -moveSpeed;
-			}
-		}
-
-	}
-
-	else if (col1->type == COLLIDER_TYPE::COLLIDER_ASTEROID || col2->type == COLLIDER_TYPE::COLLIDER_ASTEROID)
-	{
-		state = DEAD;
-	}
-
 }
