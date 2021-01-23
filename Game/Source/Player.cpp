@@ -39,7 +39,7 @@ bool Player::Start()
 	shipRect.h = 106;
 
 
-	colliderPlayer = app->collisions->AddCollider(shipRect, COLLIDER_TYPE::COLLIDER_PLAYER, this);
+	colliderPlayer = app->collisions->AddCollider(shipRect, ColliderType::COLLIDER_PLAYER, this);
 
 	return true;
 }
@@ -185,4 +185,55 @@ fPoint Player::GetPos() const
 fPoint Player::GetSpeed() const
 {
 	return speed;
+}
+
+void Player::OnCollision(Collider* col1, Collider* col2)
+{
+
+	if (col1->type == ColliderType::COLLIDER || col2->type == ColliderType::COLLIDER)
+	{
+		//vertical collisions
+		if (colliderPlayer->rect.x < col1->rect.x + col1->rect.w && colliderPlayer->rect.x + colliderPlayer->rect.w > col1->rect.x || 
+			colliderPlayer->rect.x < col2->rect.x + col2->rect.w && colliderPlayer->rect.x + colliderPlayer->rect.w > col2->rect.x)
+		{
+			if (colliderPlayer->rect.y + colliderPlayer->rect.h > col1->rect.y && colliderPlayer->rect.y < col1->rect.y || 
+				colliderPlayer->rect.y + colliderPlayer->rect.h > col2->rect.y && colliderPlayer->rect.y < col2->rect.y)
+			{
+				state = IDLE;
+				speed.y = 0;
+
+
+			}
+
+			else if (colliderPlayer->rect.y < col1->rect.y + col1->rect.h && colliderPlayer->rect.y + colliderPlayer->rect.h > col1->rect.y + col1->rect.h || 
+					 colliderPlayer->rect.y < col2->rect.y + col2->rect.h && colliderPlayer->rect.y + colliderPlayer->rect.h > col2->rect.y + col2->rect.h)
+			{
+				state = FALLING;
+				speed.y = 0;
+
+
+			}
+		}
+
+		//horitzontal collisions
+		if (colliderPlayer->rect.y < col1->rect.y + col1->rect.h - 5 && colliderPlayer->rect.y + colliderPlayer->rect.h > col1->rect.y + 5 || 
+			colliderPlayer->rect.y < col2->rect.y + col2->rect.h - 5 && colliderPlayer->rect.y + colliderPlayer->rect.h > col2->rect.y + 5)
+		{
+
+			//LEFT
+			if (colliderPlayer->rect.x < col1->rect.x + col1->rect.w && colliderPlayer->rect.x + colliderPlayer->rect.w > col1->rect.x + col1->rect.w || 
+				colliderPlayer->rect.x < col2->rect.x + col2->rect.w && colliderPlayer->rect.x + colliderPlayer->rect.w > col2->rect.x + col2->rect.w)
+			{
+				speed.x = moveSpeed;
+			}
+
+			//RIGHT
+			else if (colliderPlayer->rect.x + colliderPlayer->rect.w > col1->rect.x && colliderPlayer->rect.x < col1->rect.x || 
+				     colliderPlayer->rect.x + colliderPlayer->rect.w > col2->rect.x && colliderPlayer->rect.x < col2->rect.x)
+			{
+				speed.x = -moveSpeed;
+			}
+		}
+
+	}
 }

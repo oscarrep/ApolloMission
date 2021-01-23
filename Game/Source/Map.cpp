@@ -434,7 +434,7 @@ bool Map::LoadObjects(pugi::xml_node& data)
 	{
 		for (pugi::xml_node obj = data.child("object"); obj && ret; obj = obj.next_sibling("object"))
 		{
-			app->collisions->AddCollider({ obj.attribute("x").as_int(),obj.attribute("y").as_int() ,obj.attribute("width").as_int() ,obj.attribute("height").as_int() }, COLLIDER_TYPE::COLLIDER);
+			app->collisions->AddCollider({ obj.attribute("x").as_int(),obj.attribute("y").as_int() ,obj.attribute("width").as_int() ,obj.attribute("height").as_int() }, ColliderType::COLLIDER);
 
 		}
 

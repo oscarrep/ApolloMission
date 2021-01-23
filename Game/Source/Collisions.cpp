@@ -170,7 +170,7 @@ bool Collisions::CleanUp()
 
 }
 
-Collider* Collisions::AddCollider(SDL_Rect rect, COLLIDER_TYPE type, Module* callback)
+Collider* Collisions::AddCollider(SDL_Rect rect, ColliderType type, Module* callback)
 {
 	Collider* ret = nullptr;
 
@@ -187,7 +187,7 @@ Collider* Collisions::AddCollider(SDL_Rect rect, COLLIDER_TYPE type, Module* cal
 	return ret;
 }
 
-Collider* Collisions::AddColliderCircle(int x, int y, int radius, COLLIDER_TYPE type, Module* callback)
+Collider* Collisions::AddColliderCircle(int x, int y, int radius, ColliderType type, Module* callback)
 {
 	Collider* ret = nullptr;
 

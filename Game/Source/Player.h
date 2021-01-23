@@ -44,7 +44,7 @@ public:
 	fPoint GetPos() const;
 	fPoint GetSpeed() const;
 
-	//void OnCollision(Collider* c1, Collider* c2);
+	void OnCollision(Collider* c1, Collider* c2);
 	Collider* colliderPlayer;
 
 	bool firstUpdate = true;

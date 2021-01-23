@@ -53,7 +53,7 @@ bool Scene::Start()
 	LoadEarth();
 	LoadMoon();
 
-	moonColl = app->collisions->AddColliderCircle(0, 0, 50, COLLIDER_TYPE::COLLIDER_PLANET, this);
+	moonColl = app->collisions->AddColliderCircle(0, 0, 50, ColliderType::COLLIDER_PLANET, this);
 
 	return true;
 }

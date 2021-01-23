@@ -6,7 +6,7 @@
 #include "Module.h"
 #include "SDL/include/SDL_rect.h"
 
-enum COLLIDER_TYPE
+enum ColliderType
 {
 	COLLIDER_NONE = -1,
 	COLLIDER,
@@ -24,17 +24,17 @@ struct Collider
 	int x;
 	int y;
 	bool to_delete = false;
-	COLLIDER_TYPE type;
+	ColliderType type;
 	Module* callback = nullptr;
 	float damage = 1.0;
 
-	Collider(SDL_Rect rect, COLLIDER_TYPE type, Module* callback = nullptr) :
+	Collider(SDL_Rect rect, ColliderType type, Module* callback = nullptr) :
 		rect(rect),
 		type(type),
 		callback(callback)
 	{}
 
-	Collider(int x, int y, int radius, COLLIDER_TYPE type, Module* callback = nullptr) :
+	Collider(int x, int y, int radius, ColliderType type, Module* callback = nullptr) :
 		radius(radius),
 		x(x),
 		y(y),
@@ -56,11 +56,11 @@ struct Collider
 	int radius;
 	fPoint position;
 	bool to_delete = false;
-	COLLIDER_TYPE type;
+	ColliderType type;
 	Module* callback = nullptr;
 	float damage = 1.0;
 
-	ColliderCircle(int radius, fPoint position, COLLIDER_TYPE type, Module* callback = nullptr) :
+	ColliderCircle(int radius, fPoint position, ColliderType type, Module* callback = nullptr) :
 		radius(radius),
 		position(position),
 		type(type),
@@ -87,8 +87,8 @@ public:
 	bool Update(float dt) override;
 	bool CleanUp() override;
 
-	Collider* AddCollider(SDL_Rect rect, COLLIDER_TYPE type, Module* callback = nullptr);
-	Collider* AddColliderCircle(int x, int y, int radius, COLLIDER_TYPE type, Module* callback = nullptr);
+	Collider* AddCollider(SDL_Rect rect, ColliderType type, Module* callback = nullptr);
+	Collider* AddColliderCircle(int x, int y, int radius, ColliderType type, Module* callback = nullptr);
 
 	void DebugDraw();
 	Collider* colliders[MAX_COLLIDERS];
