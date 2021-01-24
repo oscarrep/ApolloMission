@@ -13,10 +13,11 @@ A bunch of asteroids is obstructing the path to our research base on the moon. Y
  
 ## Controls
 
- - W : propulsion
+ - W : propulsion (consumes fuel, float around for a while to recharge)
  - A D : rotate spaceship left and right
  - SPACEBAR : launch torpedo
  - ESCAPE : close game
+ - UP/DOWN : Volume
 
 ## Developers
 

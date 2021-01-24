@@ -4,6 +4,7 @@
 #include "App.h"
 #include "Module.h"
 #include "Point.h"
+//#include "Body.h"
 #include "SDL/include/SDL_rect.h"
 
 #define MAX_COLLIDERS 300
@@ -18,6 +19,8 @@ enum ColliderType
 	COLLIDER_ASTEROID,
 	COLLIDER_TORPEDO,
 	COLLIDER_PLANET,
+	COLLIDER_EARTH,
+	COLLIDER_MOON,
 	COLLIDER_MAX
 };
 
@@ -70,7 +73,7 @@ public:
 	void DebugDraw();
 
 	Collider* AddCollider(SDL_Rect rect, ColliderType type, Module* callback = nullptr);
-	Collider* AddColliderCircle(int x, int y, int radius, ColliderType type, Module* callback = nullptr);
+	Collider* AddColliderCircle(float x, float y, float radius, ColliderType type, Module* callback = nullptr);
 
 	//void AddBody(Collider collider);
 	//void DeleteBody(Collider collider);

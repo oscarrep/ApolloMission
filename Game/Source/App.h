@@ -14,6 +14,7 @@ class Textures;
 class Audio;
 class Scene;
 class Map;
+class Earth;
 class Player;
 class PhysicsEngine;
 
@@ -80,8 +81,8 @@ public:
 	Scene* scene;
 	PhysicsEngine* physicsEngine;
 	Map* map;
+	Earth* earth;
 	Player* player;
-	//PhysicsEngine* physicsEngine;
 
 private:
 

@@ -6,6 +6,7 @@
 #include "Window.h"
 #include "Scene.h"
 #include "Player.h"
+#include "Earth.h"
 #include "Map.h"
 #include "PhysicsEngine.h"
 
@@ -44,6 +45,7 @@ bool Scene::Start()
 	app->render->camera.x=300;
 	app->render->camera.y = -4000;
 	app->player->Start();
+	app->earth->Start();
 
 	backgroundrect.x = 0;
 	backgroundrect.y = 0;
@@ -51,7 +53,6 @@ bool Scene::Start()
 	backgroundrect.h = 1080;
 
 	LoadAsteroid();
-	LoadEarth();
 	LoadMoon();
 
 	moonColl = app->physicsEngine->AddColliderCircle(0, 0, 50, ColliderType::COLLIDER_PLANET, this);
@@ -78,7 +79,7 @@ bool Scene::Update(float dt)
 
 	//app->render->DrawTexture(background, 0, 0, &backgroundrect);
 	app->render->DrawTexture(asteroids, 100, 300, &(asteroidAnim.GetCurrentFrame()));
-	app->render->DrawTexture(earth, 950, 5600, &(earthAnim.GetCurrentFrame()));
+	//app->render->DrawTexture(earth, 950, 5600, &(earthAnim.GetCurrentFrame()));
 	app->render->DrawTexture(moon, 900, 1000, &(moonAnim.GetCurrentFrame()));
 
 	return true;
@@ -107,62 +108,6 @@ bool Scene::CleanUp()
 	app->tex->UnLoad(earth);
 
 	return true;
-}
-
-void Scene::LoadEarth()
-{
-	earthAnim.PushBack({ 0,	    0,  300, 300 });
-	earthAnim.PushBack({ 300,   0,  300, 300 });
-	earthAnim.PushBack({ 600,   0,  300, 300 });
-	earthAnim.PushBack({ 900,   0,  300, 300 });
-	earthAnim.PushBack({ 1200,  0,  300, 300 });
-	earthAnim.PushBack({ 1500,  0,  300, 300 });
-	earthAnim.PushBack({ 1800,  0,  300, 300 });
-	earthAnim.PushBack({ 2100,  0,  300, 300 });
-	earthAnim.PushBack({ 2400,  0,  300, 300 });
-	earthAnim.PushBack({ 2700,  0,  300, 300 });
-	earthAnim.PushBack({ 3000,  0,  300, 300 });
-	earthAnim.PushBack({ 3300,  0,  300, 300 });
-	earthAnim.PushBack({ 3600,  0,  300, 300 });
-	earthAnim.PushBack({ 3900,  0,  300, 300 });
-	earthAnim.PushBack({ 4200,  0,  300, 300 });
-	earthAnim.PushBack({ 4500,  0,  300, 300 });
-	earthAnim.PushBack({ 4800,  0,  300, 300 });
-	earthAnim.PushBack({ 5100,  0,  300, 300 });
-	earthAnim.PushBack({ 5400,  0,  300, 300 });
-	earthAnim.PushBack({ 5700,  0,  300, 300 });
-	earthAnim.PushBack({ 6000,  0,  300, 300 });
-	earthAnim.PushBack({ 6300,  0,  300, 300 });
-	earthAnim.PushBack({ 6600,  0,  300, 300 });
-	earthAnim.PushBack({ 6900,  0,  300, 300 });
-	earthAnim.PushBack({ 7200,  0,  300, 300 });
-	earthAnim.PushBack({ 7500,  0,  300, 300 });
-	earthAnim.PushBack({ 7800,  0,  300, 300 });
-	earthAnim.PushBack({ 8100,  0,  300, 300 });
-	earthAnim.PushBack({ 8400,  0,  300, 300 });
-	earthAnim.PushBack({ 8700,  0,  300, 300 });
-	earthAnim.PushBack({ 9000,  0,  300, 300 });
-	earthAnim.PushBack({ 9300,  0,  300, 300 });
-	earthAnim.PushBack({ 9600,  0,  300, 300 });
-	earthAnim.PushBack({ 9900,  0,  300, 300 });
-	earthAnim.PushBack({ 10200, 0,  300, 300 });
-	earthAnim.PushBack({ 10500, 0,  300, 300 });
-	earthAnim.PushBack({ 10800, 0,  300, 300 });
-	earthAnim.PushBack({ 11100, 0,  300, 300 });
-	earthAnim.PushBack({ 11400, 0,  300, 300 });
-	earthAnim.PushBack({ 11700, 0,  300, 300 });
-	earthAnim.PushBack({ 12000, 0,  300, 300 });
-	earthAnim.PushBack({ 12300, 0,  300, 300 });
-	earthAnim.PushBack({ 12600, 0,  300, 300 });
-	earthAnim.PushBack({ 12900, 0,  300, 300 });
-	earthAnim.PushBack({ 13200, 0,  300, 300 });
-	earthAnim.PushBack({ 13500, 0,  300, 300 });
-	earthAnim.PushBack({ 13800, 0,  300, 300 });
-	earthAnim.PushBack({ 14100, 0,  300, 300 });
-	earthAnim.PushBack({ 14400, 0,  300, 300 });
-	earthAnim.PushBack({ 14700, 0,  300, 300 });
-	earthAnim.speed = 0.05f;
-
 }
 
 void Scene::LoadMoon()

@@ -21,7 +21,6 @@ public:
 	bool PostUpdate();
 	bool CleanUp();
 
-	void LoadEarth();
 	void LoadMoon();
 	void LoadAsteroid();
 

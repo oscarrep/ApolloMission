@@ -102,7 +102,7 @@ bool Player::PreUpdate()
 		LOG("pew pew uwu");
 	}
 
-	if (app->input->GetKey(SDL_SCANCODE_W) != KEY_REPEAT && fuel<1000) fuel++;
+	if (app->input->GetKey(SDL_SCANCODE_W) != KEY_REPEAT && fuel<1000) fuel+=5;
 
 	LOG("fuel = %d", fuel);
 

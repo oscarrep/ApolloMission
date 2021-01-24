@@ -59,14 +59,16 @@ public:
 	fPoint acceleration;
 	float angle;
 	float mass;
-	float hp;
-	int fuel = 1000;
+	int hp = 5;
+	int fuel = 1500;
 	int ammo;
+
+	bool moonLanding = false;
+	bool safeReturn = false;
 
 	PlayerState state = FALLING;
 
 private:
-	float contpeed = -25;
 
 	iPoint size;
 	iPoint offset;

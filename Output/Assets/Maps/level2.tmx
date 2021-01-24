@@ -43237,7 +43237,7 @@
   <object id="350" x="266.667" y="3330.3" width="36.3636" height="45.4545"/>
   <object id="351" x="1766.67" y="2603.03" width="39.3939" height="51.5152"/>
   <object id="352" x="1512.12" y="3003.03" width="48.4848" height="33.3333"/>
-  <object id="353" x="1139.39" y="3281.82" width="12.1212" height="51.5152"/>
+  <object id="353" x="1237.39" y="3271.82" width="12.1212" height="51.5152"/>
   <object id="354" x="945.818" y="3023.03" width="3.0303" height="36.3636"/>
   <object id="357" x="530.303" y="2969.7" width="9.09091" height="15.1515"/>
   <object id="358" x="763.636" y="2478.55" width="27.2727" height="39.3939"/>
@@ -43252,8 +43252,8 @@
   <object id="367" x="1248.48" y="2518.18" width="33.3333" height="30.303"/>
   <object id="368" x="1572.73" y="2236.36" width="51.5152" height="21.2121"/>
   <object id="369" x="433.333" y="2239.39" width="69.697" height="24.2424"/>
-  <object id="370" x="1081.82" y="2003.03" width="36.3636" height="45.4545"/>
-  <object id="372" x="1180.24" y="2204.36" width="42.4242" height="48.4848"/>
+  <object id="370" x="991.82" y="1999.03" width="36.3636" height="45.4545"/>
+  <object id="372" x="1232.24" y="2194.36" width="42.4242" height="48.4848"/>
  </objectgroup>
  <objectgroup color="#00aa00" id="14" name="Colliders">
   <properties>

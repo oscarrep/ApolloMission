@@ -1,8 +1,8 @@
 #include "PhysicsEngine.h"
 #include "Render.h"
 #include "Input.h"
+//#include "Body.h"
 #include "Player.h"
-//#include "App.h"
 #include <math.h>
 #include "Log.h"
 
@@ -38,6 +38,17 @@ PhysicsEngine::PhysicsEngine() : Module()
 	matrix[COLLIDER_PLANET][COLLIDER_PLANET] = false;
 	matrix[COLLIDER_PLANET][COLLIDER_TORPEDO] = false;
 
+	matrix[COLLIDER_EARTH][COLLIDER] = false;
+	matrix[COLLIDER_EARTH][COLLIDER_PLAYER] = true;
+	matrix[COLLIDER_EARTH][COLLIDER_ASTEROID] = true;
+	matrix[COLLIDER_EARTH][COLLIDER_PLANET] = false;
+	matrix[COLLIDER_EARTH][COLLIDER_TORPEDO] = false;
+
+	matrix[COLLIDER_MOON][COLLIDER] = false;
+	matrix[COLLIDER_MOON][COLLIDER_PLAYER] = true;
+	matrix[COLLIDER_MOON][COLLIDER_ASTEROID] = true;
+	matrix[COLLIDER_MOON][COLLIDER_PLANET] = false;
+	matrix[COLLIDER_MOON][COLLIDER_TORPEDO] = false;
 
 	matrix[COLLIDER_ASTEROID][COLLIDER] = false;
 	matrix[COLLIDER_ASTEROID][COLLIDER_PLAYER] = true;
@@ -154,7 +165,7 @@ Collider* PhysicsEngine::AddCollider(SDL_Rect rect, ColliderType type, Module* c
 	return ret;
 }
 
-Collider* PhysicsEngine::AddColliderCircle(int x, int y, int radius, ColliderType type, Module* callback)
+Collider* PhysicsEngine::AddColliderCircle(float x, float y, float radius, ColliderType type, Module* callback)
 {
 	Collider* ret = nullptr;
 
@@ -205,18 +216,34 @@ void PhysicsEngine::DebugDraw()
 				colliders[i]->radius, 255, 255, 0, alpha);	//yellow		
 			break;
 
-		case COLLIDER_PLANET:
+		/*case COLLIDER_PLANET:
+			app->render->DrawCircle(colliders[i]->x,
+				colliders[i]->y,
+				colliders[i]->radius, 255, 0, 0, alpha); //red
+			break;*/
+
+		case COLLIDER_EARTH:
 			app->render->DrawCircle(colliders[i]->x,
 				colliders[i]->y,
 				colliders[i]->radius, 255, 0, 0, alpha); //red
 			break;
+
+		case COLLIDER_MOON:
+			app->render->DrawCircle(colliders[i]->x,
+				colliders[i]->y,
+				colliders[i]->radius, 255, 0, 0, alpha); //red
+			break;
+
 		}
+
 	}
 }
 
 void PhysicsEngine::doCollisions(Collider* col1, Collider* col2)
 {
-	if (col1->type == ColliderType::COLLIDER || col2->type == ColliderType::COLLIDER)
+	if (col1->type == ColliderType::COLLIDER || col2->type == ColliderType::COLLIDER || 
+		col1->type == ColliderType::COLLIDER_EARTH || col2->type == ColliderType::COLLIDER_EARTH || 
+		col1->type == ColliderType::COLLIDER_MOON || col2->type == ColliderType::COLLIDER_MOON)
 	{
 		//vertical physics
 		if (app->player->colliderPlayer->rect.x < col1->rect.x + col1->rect.w && app->player->colliderPlayer->rect.x + app->player->colliderPlayer->rect.w > col1->rect.x ||
@@ -261,6 +288,10 @@ void PhysicsEngine::doCollisions(Collider* col1, Collider* col2)
 		}
 
 	}
+
+	if (col1->type == ColliderType::COLLIDER_ASTEROID || col2->type == ColliderType::COLLIDER_ASTEROID) { app->player->hp - 1; LOG("hp : %i", app->player->hp); }
+	if (col1->type == ColliderType::COLLIDER_MOON || col2->type == ColliderType::COLLIDER_MOON) { app->player->moonLanding = true; }
+	if (col1->type == ColliderType::COLLIDER_EARTH || col2->type == ColliderType::COLLIDER_EARTH && app->player->moonLanding == true) { app->player->safeReturn = true; }
 }
 
 bool Collider::CheckCollision(const SDL_Rect& r) const
