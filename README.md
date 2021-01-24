@@ -3,13 +3,6 @@
 ## Description
 
 A bunch of asteroids is obstructing the path to our research base on the moon. You'll need to get there while destroying as much asteroids as possible.
-
-## Key Features
-
- - {Feature01}
- - {Feature02}
- - {Feature03}
- - {Feature04}
  
 ## Controls
 
