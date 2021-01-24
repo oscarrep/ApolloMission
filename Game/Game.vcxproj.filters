@@ -19,6 +19,9 @@
     <ClCompile Include="Source\Player.cpp" />
     <ClCompile Include="Source\Collisions.cpp" />
     <ClCompile Include="Source\Map.cpp" />
+    <ClCompile Include="Source\Earth.cpp">
+      <Filter>Planets</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Source\Window.h" />
@@ -61,6 +64,9 @@
     <ClInclude Include="Source\Player.h" />
     <ClInclude Include="Source\Collisions.h" />
     <ClInclude Include="Source\Map.h" />
+    <ClInclude Include="Source\Earth.h">
+      <Filter>Planets</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="External">
@@ -74,6 +80,9 @@
     </Filter>
     <Filter Include="Config">
       <UniqueIdentifier>{ac77da44-6029-424c-8d2d-c37ef9b97220}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Planets">
+      <UniqueIdentifier>{bd26722a-b5e0-4ba5-986f-f0d8fb99712d}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>

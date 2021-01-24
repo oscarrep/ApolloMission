@@ -12,7 +12,11 @@
 
 Player::Player() : Module()
 {
-
+	fireAnim.PushBack({ 0,	  0,  22, 22 });
+	fireAnim.PushBack({ 22,  0,  22, 22 });
+	fireAnim.PushBack({ 44,  0,  22, 22 });
+	fireAnim.PushBack({ 66,  0,  22, 22 });
+	fireAnim.speed = 0.2f;
 }
 
 bool Player::Awake()
@@ -36,6 +40,11 @@ bool Player::Start()
 	shipRect.y = 0;
 	shipRect.w = 26;
 	shipRect.h = 53;
+
+	propellerRect.x = 0;
+	propellerRect.y = 0;
+	propellerRect.w = 26;
+	propellerRect.h = 53;
 
 	colliderPlayer = app->physicsEngine->AddCollider(shipRect, ColliderType::COLLIDER_PLAYER, this);
 
@@ -78,6 +87,7 @@ bool Player::PreUpdate()
 	if (app->input->GetKey(SDL_SCANCODE_W) == KEY_REPEAT)
 	{
 		speed.y = -moveSpeed;
+		state = FLYING;
 	}
 	else if (app->input->GetKey(SDL_SCANCODE_W) == KEY_UP)
 	{
@@ -120,6 +130,7 @@ bool Player::Update(float dt)
 
 	case FLYING:
 
+		app->render->DrawTexture(propulsion, position.x+2, position.y+50, &(fireAnim.GetCurrentFrame()));
 		break;
 
 	case LEFT:

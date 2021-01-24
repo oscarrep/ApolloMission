@@ -14412,7 +14412,7 @@
  </layer>
  <layer id="34" name="Background" width="72" height="200">
   <properties>
-   <property name="Parallax " type="float" value="0.7"/>
+   <property name="Parallax " type="float" value="1"/>
   </properties>
   <data>
    <tile gid="1"/>
@@ -43227,25 +43227,25 @@
  </layer>
  <objectgroup id="11" name="AsteroidSpawn">
   <object id="332" x="902.667" y="860" width="50.6667" height="41.3333"/>
-  <object id="333" x="1654.67" y="234.667" width="50.6667" height="58.6667"/>
+  <object id="333" x="1414.67" y="1010.67" width="50.6667" height="58.6667"/>
   <object id="335" x="1716" y="1752" width="44" height="44"/>
   <object id="343" x="1322" y="1490" width="36" height="33"/>
   <object id="345" x="728" y="1108" width="47" height="49"/>
   <object id="346" x="1424.24" y="4100" width="54.5455" height="48.4848"/>
   <object id="347" x="918.182" y="3987.88" width="21.2121" height="42.4242"/>
-  <object id="349" x="2003.03" y="3745.45" width="33.3333" height="24.2424"/>
+  <object id="349" x="1751.03" y="3621.45" width="33.3333" height="24.2424"/>
   <object id="350" x="266.667" y="3330.3" width="36.3636" height="45.4545"/>
   <object id="351" x="1766.67" y="2603.03" width="39.3939" height="51.5152"/>
   <object id="352" x="1512.12" y="3003.03" width="48.4848" height="33.3333"/>
   <object id="353" x="1139.39" y="3281.82" width="12.1212" height="51.5152"/>
-  <object id="354" x="781.818" y="2803.03" width="3.0303" height="36.3636"/>
+  <object id="354" x="945.818" y="3023.03" width="3.0303" height="36.3636"/>
   <object id="357" x="530.303" y="2969.7" width="9.09091" height="15.1515"/>
-  <object id="358" x="163.636" y="2554.55" width="27.2727" height="39.3939"/>
+  <object id="358" x="763.636" y="2478.55" width="27.2727" height="39.3939"/>
   <object id="359" x="745.455" y="2084.85" width="24.2424" height="30.303"/>
-  <object id="360" x="196.97" y="303.03" width="24.2424" height="36.3636"/>
-  <object id="361" x="2036.36" y="827.273" width="33.3333" height="39.3939"/>
+  <object id="360" x="528.97" y="1611.03" width="24.2424" height="36.3636"/>
+  <object id="361" x="1732.36" y="1303.27" width="33.3333" height="39.3939"/>
   <object id="362" x="284.848" y="4666.67" width="24.2424" height="30.303"/>
-  <object id="363" x="2118.18" y="5312.12" width="27.2727" height="66.6667"/>
+  <object id="363" x="1310.18" y="4488.12" width="27.2727" height="66.6667"/>
   <object id="364" x="1784.85" y="4448.48" width="39.3939" height="69.697"/>
   <object id="365" x="393.939" y="4054.55" width="45.4545" height="12.1212"/>
   <object id="366" x="690.909" y="3612.12" width="15.1515" height="39.3939"/>
@@ -43253,29 +43253,23 @@
   <object id="368" x="1572.73" y="2236.36" width="51.5152" height="21.2121"/>
   <object id="369" x="433.333" y="2239.39" width="69.697" height="24.2424"/>
   <object id="370" x="1081.82" y="2003.03" width="36.3636" height="45.4545"/>
-  <object id="372" x="2024.24" y="2136.36" width="42.4242" height="48.4848"/>
+  <object id="372" x="1180.24" y="2204.36" width="42.4242" height="48.4848"/>
  </objectgroup>
  <objectgroup color="#00aa00" id="14" name="Colliders">
   <properties>
    <property name="Collision" type="bool" value="true"/>
   </properties>
-  <object id="375" x="-75.7576" y="-42.4242" width="2403.03" height="133.333"/>
-  <object id="376" x="2209.09" y="-57.5758" width="260.606" height="6527.27"/>
-  <object id="377" x="-187.879" y="-81.8168" width="260.606" height="6527.27"/>
-  <object id="378" x="-110.606" y="6351.52" width="2439.39" height="354.545"/>
+  <object id="375" x="-75.7576" y="-42.4242" width="2403.03" height="477.333"/>
+  <object id="376" x="1933.09" y="-57.5758" width="536.606" height="6527.27"/>
+  <object id="377" x="-215.879" y="-85.8168" width="444.606" height="6527.27"/>
+  <object id="378" x="-110.606" y="5911.52" width="2439.39" height="794.545"/>
  </objectgroup>
  <objectgroup color="#aa0000" id="15" name="ColliderDmg">
   <properties>
    <property name="Damage" type="bool" value="true"/>
   </properties>
-  <object id="152" x="346.062" y="1860.06" width="143.333" height="231.333"/>
-  <object id="153" x="1023.57" y="1957.36" width="794" height="115"/>
-  <object id="279" x="1550.08" y="1286.42" width="369.167" height="137.834"/>
-  <object id="320" x="1324.25" y="1767.33" width="101.75" height="62.9167"/>
-  <object id="322" x="30.25" y="1288.42" width="218.167" height="263.167"/>
-  <object id="323" x="240.917" y="1325.75" width="202.167" height="199.167"/>
  </objectgroup>
- <objectgroup id="17" name="Spawn">
-  <object id="284" x="150" y="1722" width="58" height="36"/>
+ <objectgroup color="#ff0000" id="17" name="Spawn">
+  <object id="284" x="1091.33" y="4860" width="58" height="36"/>
  </objectgroup>
 </map>

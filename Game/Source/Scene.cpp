@@ -78,8 +78,8 @@ bool Scene::Update(float dt)
 
 	//app->render->DrawTexture(background, 0, 0, &backgroundrect);
 	app->render->DrawTexture(asteroids, 100, 300, &(asteroidAnim.GetCurrentFrame()));
-	app->render->DrawTexture(earth, 100, 1000, &(earthAnim.GetCurrentFrame()));
-	app->render->DrawTexture(moon, 900, 100, &(moonAnim.GetCurrentFrame()));
+	app->render->DrawTexture(earth, 950, 5600, &(earthAnim.GetCurrentFrame()));
+	app->render->DrawTexture(moon, 900, 1000, &(moonAnim.GetCurrentFrame()));
 
 	return true;
 }

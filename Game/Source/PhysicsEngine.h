@@ -87,7 +87,6 @@ public:
 
 
 public:
-    //Rocket* CreateRocket(fPoint position, float mass, fPoint velocity, float rad, int health, float fuel);
     //Planet* CreatePlanet(fPoint position, float mass, float rad);
 
 

@@ -235,14 +235,14 @@ void PhysicsEngine::doCollisions(Collider* col1, Collider* col2)
 			{
 				app->player->state = FALLING;
 				app->player->speed.y = 0;
-				if (app->player->speed.y == 0)app->player->speed.y = gravity;
+				if (app->player->speed.y == 0)app->player->speed.y = 90;
 
 			}
 		}
 
 		//horitzontal physics
-		if (app->player->colliderPlayer->rect.y < col1->rect.y + col1->rect.h && app->player->colliderPlayer->rect.y + app->player->colliderPlayer->rect.h > col1->rect.y ||
-			app->player->colliderPlayer->rect.y < col2->rect.y + col2->rect.h && app->player->colliderPlayer->rect.y + app->player->colliderPlayer->rect.h > col2->rect.y)
+		if (app->player->colliderPlayer->rect.y < col1->rect.y + col1->rect.h -5 && app->player->colliderPlayer->rect.y + app->player->colliderPlayer->rect.h > col1->rect.y +5 ||
+			app->player->colliderPlayer->rect.y < col2->rect.y + col2->rect.h -5 && app->player->colliderPlayer->rect.y + app->player->colliderPlayer->rect.h > col2->rect.y +5)
 		{
 
 			//LEFT

@@ -50,7 +50,7 @@ public:
 	Collider* colliderPlayer;
 
 	bool firstUpdate = true;
-	fPoint spawnPos = { 1050, -4500 };
+	fPoint spawnPos;
 	fPoint position;
 	float moveSpeed = 90;
 	float gravity = 90;
@@ -72,6 +72,7 @@ private:
 	iPoint offset;
 
 	SDL_Rect shipRect;
+	SDL_Rect propellerRect;
 
 	SDL_Texture* characterTex = nullptr;
 	SDL_Texture* fire = nullptr;
