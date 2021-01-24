@@ -83,23 +83,28 @@ bool Player::PreUpdate()
 	{
 		speed.x = 0;
 	}
-
-	if (app->input->GetKey(SDL_SCANCODE_W) == KEY_REPEAT)
+	if (fuel > 0)
 	{
-		speed.y = -moveSpeed;
-		state = FLYING;
+		if (app->input->GetKey(SDL_SCANCODE_W) == KEY_REPEAT)
+		{
+			
+			state = FLYING;
+		}
 	}
 	else if (app->input->GetKey(SDL_SCANCODE_W) == KEY_UP)
 	{
 		speed.y = 0;
 	}
 
-	if (app->input->GetKey(SDL_SCANCODE_Q) == KEY_DOWN)
+	if (app->input->GetKey(SDL_SCANCODE_SPACE) == KEY_DOWN)
 	{
-
+		//launchTorpedo();
+		LOG("pew pew uwu");
 	}
 
+	if (app->input->GetKey(SDL_SCANCODE_W) != KEY_REPEAT && fuel<1000) fuel++;
 
+	LOG("fuel = %d", fuel);
 
 	return true;
 }
@@ -129,7 +134,8 @@ bool Player::Update(float dt)
 		break;
 
 	case FLYING:
-
+		speed.y = -moveSpeed;
+		fuel--;
 		app->render->DrawTexture(propulsion, position.x+2, position.y+50, &(fireAnim.GetCurrentFrame()));
 		break;
 

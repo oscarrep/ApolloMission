@@ -60,7 +60,7 @@ public:
 	float angle;
 	float mass;
 	float hp;
-	float fuel;
+	int fuel = 1000;
 	int ammo;
 
 	PlayerState state = FALLING;
