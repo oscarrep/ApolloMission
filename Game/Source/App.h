@@ -15,7 +15,7 @@ class Audio;
 class Scene;
 class Map;
 class Player;
-class Collisions;
+class PhysicsEngine;
 
 
 class App
@@ -78,9 +78,10 @@ public:
 	Textures* tex;
 	Audio* audio;
 	Scene* scene;
+	PhysicsEngine* physicsEngine;
 	Map* map;
 	Player* player;
-	Collisions* collisions;
+	//PhysicsEngine* physicsEngine;
 
 private:
 

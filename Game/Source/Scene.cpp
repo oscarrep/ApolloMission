@@ -7,7 +7,7 @@
 #include "Scene.h"
 #include "Player.h"
 #include "Map.h"
-//#include "Physics.h"
+#include "PhysicsEngine.h"
 
 #include "Defs.h"
 #include "Log.h"
@@ -54,7 +54,7 @@ bool Scene::Start()
 	LoadEarth();
 	LoadMoon();
 
-	moonColl = app->collisions->AddColliderCircle(0, 0, 50, ColliderType::COLLIDER_PLANET, this);
+	moonColl = app->physicsEngine->AddColliderCircle(0, 0, 50, ColliderType::COLLIDER_PLANET, this);
 
 	return true;
 }
@@ -74,12 +74,13 @@ bool Scene::Update(float dt)
 	if (app->input->GetKey(SDL_SCANCODE_UP) == KEY_DOWN) { volume++; LOG("volume--"); }
 	if (app->input->GetKey(SDL_SCANCODE_DOWN) == KEY_DOWN) { volume--; LOG("volume++"); }
 
-	app->render->DrawTexture(background, 0, 0, &backgroundrect);
-	app->render->DrawTexture(asteroids, 0, 0, &(asteroidAnim.GetCurrentFrame()));
-	app->render->DrawTexture(earth, 100, 500, &(earthAnim.GetCurrentFrame()));
-	app->render->DrawTexture(moon, 900, -5000, &(moonAnim.GetCurrentFrame()));
-
 	app->map->Draw();
+
+	//app->render->DrawTexture(background, 0, 0, &backgroundrect);
+	app->render->DrawTexture(asteroids, 100, 300, &(asteroidAnim.GetCurrentFrame()));
+	app->render->DrawTexture(earth, 100, 1000, &(earthAnim.GetCurrentFrame()));
+	app->render->DrawTexture(moon, 900, 100, &(moonAnim.GetCurrentFrame()));
+
 	return true;
 }
 

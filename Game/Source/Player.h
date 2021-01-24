@@ -2,7 +2,7 @@
 #define __PLAYER_H__
 
 #include "Module.h"
-#include "Collisions.h"
+#include "PhysicsEngine.h"
 #include "Point.h"
 #include "Animation.h"
 #include "SDL_mixer/include/SDL_mixer.h"
@@ -25,7 +25,6 @@ enum PlayerState
 	MAX_STATES
 };
 
-
 class Player : public Module
 {
 public:
@@ -39,12 +38,15 @@ public:
 	bool PostUpdate();
 	bool CleanUp();
 
-	//bool GameWin();
+	void launchTorpedo();
+	void addFuel();
+	void addMomentum(float xV, float yV, float angle);
+	//void addMomentumAngle(float xV, float yV, float angle);
 
 	fPoint GetPos() const;
 	fPoint GetSpeed() const;
 
-	void OnCollision(Collider* c1, Collider* c2);
+	void OnCollision(Collider* col1, Collider* col2);
 	Collider* colliderPlayer;
 
 	bool firstUpdate = true;
@@ -53,14 +55,21 @@ public:
 	float moveSpeed = 90;
 	float gravity = 90;
 
+	fPoint speed;
+	fPoint acceleration;
+	float angle;
+	float mass;
+	float hp;
+	float fuel;
+	int ammo;
+
+	PlayerState state = FALLING;
 
 private:
 	float contpeed = -25;
 
 	iPoint size;
 	iPoint offset;
-	fPoint speed;
-	fPoint acceleration;
 
 	SDL_Rect shipRect;
 
@@ -78,8 +87,6 @@ private:
 	float deltaTime = 0;
 	Uint32 lastTime = 0;
 	Uint32 currTime = 0;
-
-	PlayerState state = FALLING;
 
 };
 

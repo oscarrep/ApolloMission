@@ -3,7 +3,7 @@
 
 #include "Module.h"
 #include "Animation.h"
-#include "Collisions.h"
+#include "PhysicsEngine.h"
 
 struct SDL_Texture;
 

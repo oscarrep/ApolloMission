@@ -7,7 +7,6 @@
 #include "Textures.h"
 #include "Scene.h"
 #include "Animation.h"
-#include "Collisions.h"
 #include "Window.h"
 #include "SString.h"
 
@@ -28,17 +27,17 @@ bool Player::Start()
 	characterTex = app->tex->Load("Assets/textures/spaceship.png");
 	propulsion = app->tex->Load("Assets/textures/fire.png");
 
-	idleAnim.PushBack({ 0, 0, 52, 106 });
+	idleAnim.PushBack({ 0, 0, 26, 53 });
 
 	position.x = spawnPos.x;
 	position.y = spawnPos.y;
 
 	shipRect.x = 0;
 	shipRect.y = 0;
-	shipRect.w = 52;
-	shipRect.h = 106;
+	shipRect.w = 26;
+	shipRect.h = 53;
 
-	colliderPlayer = app->collisions->AddCollider(shipRect, ColliderType::COLLIDER_PLAYER, this);
+	colliderPlayer = app->physicsEngine->AddCollider(shipRect, ColliderType::COLLIDER_PLAYER, this);
 
 	return true;
 }
@@ -103,10 +102,12 @@ bool Player::Update(float dt)
 	lastTime = SDL_GetTicks();
 
 
+	//app->physicsEngine->updatePlayerStates();
+
 	switch (state)
 	{
 	case IDLE:
-		acceleration.y = 0;
+		app->player->acceleration.y = 0;
 		break;
 
 	case FIRING:
@@ -138,7 +139,6 @@ bool Player::Update(float dt)
 		break;
 
 	}
-
 
 	speed.y = speed.y + acceleration.y;
 
@@ -172,7 +172,7 @@ bool Player::CleanUp()
 {
 	app->tex->UnLoad(characterTex);
 	/*if (colliderPlayer != nullptr)
-		colliderPlayer->to_delete = true;*/
+		colliderPlayer->toDelete = true;*/
 
 	return true;
 }
@@ -187,52 +187,4 @@ fPoint Player::GetSpeed() const
 	return speed;
 }
 
-void Player::OnCollision(Collider* col1, Collider* col2)
-{
-
-	if (col1->type == ColliderType::COLLIDER || col2->type == ColliderType::COLLIDER)
-	{
-		//vertical collisions
-		if (colliderPlayer->rect.x < col1->rect.x + col1->rect.w && colliderPlayer->rect.x + colliderPlayer->rect.w > col1->rect.x || 
-			colliderPlayer->rect.x < col2->rect.x + col2->rect.w && colliderPlayer->rect.x + colliderPlayer->rect.w > col2->rect.x)
-		{
-			if (colliderPlayer->rect.y + colliderPlayer->rect.h > col1->rect.y && colliderPlayer->rect.y < col1->rect.y || 
-				colliderPlayer->rect.y + colliderPlayer->rect.h > col2->rect.y && colliderPlayer->rect.y < col2->rect.y)
-			{
-				state = IDLE;
-				speed.y = 0;
-				if (app->input->GetKey(SDL_SCANCODE_W) == KEY_REPEAT) speed.y = -moveSpeed;
-			}
-
-			else if (colliderPlayer->rect.y < col1->rect.y + col1->rect.h && colliderPlayer->rect.y + colliderPlayer->rect.h > col1->rect.y + col1->rect.h || 
-					 colliderPlayer->rect.y < col2->rect.y + col2->rect.h && colliderPlayer->rect.y + colliderPlayer->rect.h > col2->rect.y + col2->rect.h)
-			{
-				state = FALLING;
-				speed.y = 0;
-				if (speed.y == 0)speed.y = gravity;
-
-			}
-		}
-
-		//horitzontal collisions
-		if (colliderPlayer->rect.y < col1->rect.y + col1->rect.h - 5 && colliderPlayer->rect.y + colliderPlayer->rect.h > col1->rect.y + 5 || 
-			colliderPlayer->rect.y < col2->rect.y + col2->rect.h - 5 && colliderPlayer->rect.y + colliderPlayer->rect.h > col2->rect.y + 5)
-		{
-
-			//LEFT
-			if (colliderPlayer->rect.x < col1->rect.x + col1->rect.w && colliderPlayer->rect.x + colliderPlayer->rect.w > col1->rect.x + col1->rect.w || 
-				colliderPlayer->rect.x < col2->rect.x + col2->rect.w && colliderPlayer->rect.x + colliderPlayer->rect.w > col2->rect.x + col2->rect.w)
-			{
-				speed.x = moveSpeed;
-			}
-
-			//RIGHT
-			else if (colliderPlayer->rect.x + colliderPlayer->rect.w > col1->rect.x && colliderPlayer->rect.x < col1->rect.x || 
-				     colliderPlayer->rect.x + colliderPlayer->rect.w > col2->rect.x && colliderPlayer->rect.x < col2->rect.x)
-			{
-				speed.x = -moveSpeed;
-			}
-		}
-
-	}
-}
+void Player::OnCollision(Collider* col1, Collider* col2) { app->physicsEngine->doCollisions(col1, col2); }

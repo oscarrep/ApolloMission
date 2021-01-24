@@ -1,6 +1,6 @@
 #ifndef __COLLISIONS_H__
 #define __COLLISIONS_H__
-
+/*
 #define MAX_COLLIDERS 300
 
 #include "Module.h"
@@ -49,7 +49,7 @@ struct Collider
 	}
 
 	bool CheckCollision(const SDL_Rect& r) const;
-};
+};*/
 
 /*struct ColliderCircle
 {
@@ -76,12 +76,12 @@ struct Collider
 	bool CheckCollisionCircle(const SDL_Rect& r) const;
 };*/
 
-class Collisions : public Module
+/*class PhysicsEngine : public Module
 {
 public:
 
-	Collisions();
-	~Collisions();
+	PhysicsEngine();
+	~PhysicsEngine();
 
 	bool PreUpdate() override;
 	bool Update(float dt) override;
@@ -99,5 +99,5 @@ private:
 	bool matrix[COLLIDER_MAX][COLLIDER_MAX];
 
 };
-
+*/
 #endif

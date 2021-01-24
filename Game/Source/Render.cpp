@@ -234,8 +234,12 @@ bool Render::DrawCircle(int x, int y, int radius, Uint8 r, Uint8 g, Uint8 b, Uin
 void Render::CameraPos()
 {
 	uint scale = app->win->GetScale();
-	SDL_Rect rect = { app->player->colliderPlayer->rect.x * scale ,app->player->colliderPlayer->rect.y * scale ,app->player->colliderPlayer->rect.w * scale ,app->player->colliderPlayer->rect.h * scale };
-	SDL_Rect cam = { -camera.x * scale ,-camera.y * scale ,camera.w * scale ,camera.h * scale };
+	SDL_Rect rect = 
+	{ 
+		app->player->colliderPlayer->rect.x * scale, app->player->colliderPlayer->rect.y * scale,
+		app->player->colliderPlayer->rect.w * scale, app->player->colliderPlayer->rect.h * scale 
+	};
+	SDL_Rect cam = { -camera.x * scale, -camera.y * scale, camera.w * scale, camera.h * scale };
 
 	if (cam.x + cam.w - (float)CAMERA_MARGE_XL < rect.x + rect.w)
 		cam.x = rect.x + rect.w + (float)CAMERA_MARGE_XL - cam.w;

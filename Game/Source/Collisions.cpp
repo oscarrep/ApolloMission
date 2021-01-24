@@ -1,12 +1,12 @@
-#include "App.h"
+/*#include "App.h"
 #include "Input.h"
 #include "Render.h"
-#include "Collisions.h"
+#include "PhysicsEngine.h"
 #include "Player.h"
 
 #include "Log.h"
 
-Collisions::Collisions()
+PhysicsEngine::PhysicsEngine()
 {
 	for (uint i = 0; i < MAX_COLLIDERS; ++i)
 		colliders[i] = nullptr;
@@ -48,10 +48,10 @@ Collisions::Collisions()
 }
 
 
-Collisions::~Collisions()
+PhysicsEngine::~PhysicsEngine()
 {}
 
-bool Collisions::PreUpdate()
+bool PhysicsEngine::PreUpdate()
 {
 	for (uint i = 0; i < MAX_COLLIDERS; ++i)
 	{
@@ -98,7 +98,7 @@ bool Collisions::PreUpdate()
 }
 
 
-bool Collisions::Update(float dt)
+bool PhysicsEngine::Update(float dt)
 {
 
 	// To be implemented debug capabilities for painting colliders and godmode
@@ -109,7 +109,7 @@ bool Collisions::Update(float dt)
 
 }
 
-void Collisions::DebugDraw()
+void PhysicsEngine::DebugDraw()
 {
 	if (app->input->GetKey(SDL_SCANCODE_F9) == KEY_DOWN)
 		debug = !debug;
@@ -152,7 +152,7 @@ void Collisions::DebugDraw()
 	}
 }
 
-bool Collisions::CleanUp()
+bool PhysicsEngine::CleanUp()
 {
 	//LOG("Freeing all colliders");
 
@@ -170,7 +170,7 @@ bool Collisions::CleanUp()
 
 }
 
-Collider* Collisions::AddCollider(SDL_Rect rect, ColliderType type, Module* callback)
+Collider* PhysicsEngine::AddCollider(SDL_Rect rect, ColliderType type, Module* callback)
 {
 	Collider* ret = nullptr;
 
@@ -187,7 +187,7 @@ Collider* Collisions::AddCollider(SDL_Rect rect, ColliderType type, Module* call
 	return ret;
 }
 
-Collider* Collisions::AddColliderCircle(int x, int y, int radius, ColliderType type, Module* callback)
+Collider* PhysicsEngine::AddColliderCircle(int x, int y, int radius, ColliderType type, Module* callback)
 {
 	Collider* ret = nullptr;
 
@@ -210,4 +210,4 @@ bool Collider::CheckCollision(const SDL_Rect& r) const
 		rect.x + rect.w > r.x &&
 		rect.y < r.y + r.h &&
 		rect.h + rect.y > r.y);
-}
+}*/
