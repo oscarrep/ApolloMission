@@ -108,7 +108,7 @@ public:
     //Rocket* rocket;
     fPoint position;
 
-	bool debug = true;
+	bool debug = false;
 
 private:
 
