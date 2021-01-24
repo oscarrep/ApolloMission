@@ -291,7 +291,7 @@ void PhysicsEngine::doCollisions(Collider* col1, Collider* col2)
 
 	if (col1->type == ColliderType::COLLIDER_ASTEROID || col2->type == ColliderType::COLLIDER_ASTEROID) { app->player->hp - 1; LOG("hp : %i", app->player->hp); }
 	if (col1->type == ColliderType::COLLIDER_MOON || col2->type == ColliderType::COLLIDER_MOON) { app->player->moonLanding = true; }
-	if (col1->type == ColliderType::COLLIDER_EARTH || col2->type == ColliderType::COLLIDER_EARTH && app->player->moonLanding == true) { app->player->safeReturn = true; }
+	if (col1->type == ColliderType::COLLIDER_EARTH || col2->type == ColliderType::COLLIDER_EARTH && app->player->moonLanding == true) { app->player->safeReturn = true; LOG("you win"); }
 }
 
 bool Collider::CheckCollision(const SDL_Rect& r) const

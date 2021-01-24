@@ -1,5 +1,5 @@
-#ifndef __EARTH_H__
-#define __EARTH_H__
+#ifndef __MOON_H__
+#define __MOON_H__
 
 #include "Module.h"
 #include "PhysicsEngine.h"
@@ -11,11 +11,11 @@
 struct SDL_Texture;
 struct SDL_Rect;
 
-class Earth : public Module
+class Moon : public Module
 {
 public:
-	Earth();
-	~Earth() {};
+	Moon();
+	~Moon() {};
 
 	bool Awake();
 	bool Start();
@@ -29,10 +29,10 @@ public:
 	void OnCollision(Collider* col1, Collider* col2);
 	void LoadAnim();
 
-	Collider* colliderEarth;
+	Collider* colliderMoon;
 
 	bool firstUpdate = true;
-	iPoint spawnPos = {950, 5600};
+	iPoint spawnPos = { 900, 1000 };
 	int radius = 150;
 	float gravity = 90;
 
@@ -45,11 +45,11 @@ private:
 
 	SDL_Rect rect;
 
-	SDL_Texture* earthTex = nullptr;
+	SDL_Texture* moonTex = nullptr;
 
 	Animation* currentAnim = nullptr;
-	Animation earthAnim;
+	Animation moonAnim;
 
 };
 
-#endif // !__EARTH_H__
+#endif // !__MOON_H__

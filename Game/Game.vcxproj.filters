@@ -22,6 +22,8 @@
     <ClCompile Include="Source\Earth.cpp">
       <Filter>Planets</Filter>
     </ClCompile>
+    <ClCompile Include="Source\Body.cpp" />
+    <ClCompile Include="Source\Moon.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Source\Window.h" />
@@ -67,6 +69,8 @@
     <ClInclude Include="Source\Earth.h">
       <Filter>Planets</Filter>
     </ClInclude>
+    <ClInclude Include="Source\Body.h" />
+    <ClInclude Include="Source\Moon.h" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="External">

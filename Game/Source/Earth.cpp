@@ -29,8 +29,8 @@ bool Earth::Start()
 	rect.w = 300;
 	rect.h = 300;
 
-	//colliderEarth = app->physicsEngine->AddCollider(rect, ColliderType::COLLIDER_EARTH, this);
-	colliderEarth = app->physicsEngine->AddColliderCircle(900, 5600, 300, ColliderType::COLLIDER_EARTH, this);
+	colliderEarth = app->physicsEngine->AddCollider(rect, ColliderType::COLLIDER_EARTH, this);
+	//colliderEarth = app->physicsEngine->AddColliderCircle(900, 5600, 300, ColliderType::COLLIDER_EARTH, this);
 
 	return true;
 }

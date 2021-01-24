@@ -7,6 +7,7 @@
 #include "Scene.h"
 #include "Map.h"
 #include "Earth.h"
+#include "Moon.h"
 #include "Player.h"
 #include "PhysicsEngine.h"
 
@@ -29,6 +30,7 @@ App::App(int argc, char* args[]) : argc(argc), args(args)
 	scene = new Scene();
 	map = new Map();
 	earth = new Earth();
+	moon = new Moon();
 	player = new Player();
 	physicsEngine = new PhysicsEngine();
 
@@ -42,6 +44,7 @@ App::App(int argc, char* args[]) : argc(argc), args(args)
 	AddModule(scene);
 	AddModule(map);
 	AddModule(earth);
+	AddModule(moon);
 	AddModule(player);
 	AddModule(physicsEngine);
 

@@ -15,6 +15,7 @@ class Audio;
 class Scene;
 class Map;
 class Earth;
+class Moon;
 class Player;
 class PhysicsEngine;
 
@@ -82,6 +83,7 @@ public:
 	PhysicsEngine* physicsEngine;
 	Map* map;
 	Earth* earth;
+	Moon* moon;
 	Player* player;
 
 private:

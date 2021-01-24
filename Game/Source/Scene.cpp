@@ -7,6 +7,7 @@
 #include "Scene.h"
 #include "Player.h"
 #include "Earth.h"
+#include "Moon.h"
 #include "Map.h"
 #include "PhysicsEngine.h"
 
@@ -46,6 +47,7 @@ bool Scene::Start()
 	app->render->camera.y = -4000;
 	app->player->Start();
 	app->earth->Start();
+	app->moon->Start();
 
 	backgroundrect.x = 0;
 	backgroundrect.y = 0;
@@ -53,7 +55,6 @@ bool Scene::Start()
 	backgroundrect.h = 1080;
 
 	LoadAsteroid();
-	LoadMoon();
 
 	moonColl = app->physicsEngine->AddColliderCircle(0, 0, 50, ColliderType::COLLIDER_PLANET, this);
 
@@ -80,7 +81,7 @@ bool Scene::Update(float dt)
 	//app->render->DrawTexture(background, 0, 0, &backgroundrect);
 	app->render->DrawTexture(asteroids, 100, 300, &(asteroidAnim.GetCurrentFrame()));
 	//app->render->DrawTexture(earth, 950, 5600, &(earthAnim.GetCurrentFrame()));
-	app->render->DrawTexture(moon, 900, 1000, &(moonAnim.GetCurrentFrame()));
+	//app->render->DrawTexture(moon, 900, 1000, &(moonAnim.GetCurrentFrame()));
 
 	return true;
 }
@@ -104,65 +105,8 @@ bool Scene::CleanUp()
 	app->tex->UnLoad(background);
 	app->tex->UnLoad(asteroids);
 	app->tex->UnLoad(ship);
-	app->tex->UnLoad(moon);
-	app->tex->UnLoad(earth);
 
 	return true;
-}
-
-void Scene::LoadMoon()
-{
-	moonAnim.PushBack({ 0,	  0,  200, 200 });
-	moonAnim.PushBack({ 200,  0,  200, 200 });
-	moonAnim.PushBack({ 400,  0,  200, 200 });
-	moonAnim.PushBack({ 600,  0,  200, 200 });
-	moonAnim.PushBack({ 800,  0,  200, 200 });
-	moonAnim.PushBack({ 1000, 0,  200, 200 });
-	moonAnim.PushBack({ 1200, 0,  200, 200 });
-	moonAnim.PushBack({ 1400, 0,  200, 200 });
-	moonAnim.PushBack({ 1600, 0,  200, 200 });
-	moonAnim.PushBack({ 1800, 0,  200, 200 });
-	moonAnim.PushBack({ 2000, 0,  200, 200 });
-	moonAnim.PushBack({ 2200, 0,  200, 200 });
-	moonAnim.PushBack({ 2400, 0,  200, 200 });
-	moonAnim.PushBack({ 2600, 0,  200, 200 });
-	moonAnim.PushBack({ 2800, 0,  200, 200 });
-	moonAnim.PushBack({ 3000, 0,  200, 200 });
-	moonAnim.PushBack({ 3200, 0,  200, 200 });
-	moonAnim.PushBack({ 3400, 0,  200, 200 });
-	moonAnim.PushBack({ 3600, 0,  200, 200 });
-	moonAnim.PushBack({ 3800, 0,  200, 200 });
-	moonAnim.PushBack({ 4000, 0,  200, 200 });
-	moonAnim.PushBack({ 4200, 0,  200, 200 });
-	moonAnim.PushBack({ 4400, 0,  200, 200 });
-	moonAnim.PushBack({ 4600, 0,  200, 200 });
-	moonAnim.PushBack({ 4800, 0,  200, 200 });
-	moonAnim.PushBack({ 5000, 0,  200, 200 });
-	moonAnim.PushBack({ 5200, 0,  200, 200 });
-	moonAnim.PushBack({ 5400, 0,  200, 200 });
-	moonAnim.PushBack({ 5600, 0,  200, 200 });
-	moonAnim.PushBack({ 5800, 0,  200, 200 });
-	moonAnim.PushBack({ 6000, 0,  200, 200 });
-	moonAnim.PushBack({ 6200, 0,  200, 200 });
-	moonAnim.PushBack({ 6400, 0,  200, 200 });
-	moonAnim.PushBack({ 6600, 0,  200, 200 });
-	moonAnim.PushBack({ 6800, 0,  200, 200 });
-	moonAnim.PushBack({ 7000, 0,  200, 200 });
-	moonAnim.PushBack({ 7200, 0,  200, 200 });
-	moonAnim.PushBack({ 7400, 0,  200, 200 });
-	moonAnim.PushBack({ 7600, 0,  200, 200 });
-	moonAnim.PushBack({ 7800, 0,  200, 200 });
-	moonAnim.PushBack({ 8000, 0,  200, 200 });
-	moonAnim.PushBack({ 8200, 0,  200, 200 });
-	moonAnim.PushBack({ 8400, 0,  200, 200 });
-	moonAnim.PushBack({ 8600, 0,  200, 200 });
-	moonAnim.PushBack({ 8800, 0,  200, 200 });
-	moonAnim.PushBack({ 9000, 0,  200, 200 });
-	moonAnim.PushBack({ 9200, 0,  200, 200 });
-	moonAnim.PushBack({ 9400, 0,  200, 200 });
-	moonAnim.PushBack({ 9600, 0,  200, 200 });
-	moonAnim.PushBack({ 9800, 0,  200, 200 });
-	moonAnim.speed = 0.1f;
 }
 
 void Scene::LoadAsteroid()
